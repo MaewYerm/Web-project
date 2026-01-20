@@ -1,0 +1,24 @@
+{
+  "name": "web-project",
+  "version": "1.0.0",
+  "description": "พัฒนาเว็บไซต์ในรายวิชา 226297 Web Programming",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MaewYerm/Web-project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/MaewYerm/Web-project/issues"
+  },
+  "homepage": "https://github.com/MaewYerm/Web-project#readme",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
