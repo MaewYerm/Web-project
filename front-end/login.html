@@ -2,79 +2,48 @@
 <html lang="th">
 <head>
   <meta charset="UTF-8">
-  <title>Login</title>
-  <script src="front-end\js\tailwind-config.js"></script>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-  tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            prompt: ['Prompt', 'sans-serif'],
-          }
-        }
-      }
-    }
-  </script>
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600&display=swap" rel="stylesheet">
- 
+<title>Login</title>
+
+<link rel="stylesheet" href="css/login.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
+<body class="login-bg">
 
-<body class=" min-h-screen flex items-center justify-center bg-red-900" style="
-    background-image: url('/front-end/images/Noise\ &\ Texture.png');
-    background-repeat: repeat;
-    background-size: auto;
-    "
-    >
+  <div class="login-card">
 
-  <div class="transform scale-110 bg-gray-200 w-[360px] h-[480px] p-10 rounded-[40px] text-center">
+    <img src="/front-end/images/project logo.png" class="logo">
 
-    <img src="/front-end/images/project logo.png" class="w-20 mx-auto mb-8 scale-150">
-
-    <h2 class="font-prompt text-xl font-bold">
+    <h2 class="title">
       ระบบจัดการคลังชิ้นเนื้อโคขุน
     </h2>
 
-    <p class="font-prompt text-sm text-grey01 mb-2 p-2">
+    <p class="subtitle">
       กรุณาเข้าสู่ระบบเพื่อจัดการคลังชิ้นเนื้อ
     </p>
 
-    <form class="space-y-4">
-    <div class="text-left ">
-        <label class="font-prompt font-bold text-sm">ชื่อผู้ใช้ :</label>
-        <input type="text"
-          placeholder="กรุณากรอกชื่อผู้ใช้"
-          class="w-full px-4 py-2 mt-2 rounded-[15px] focus:outline-none">
+    <form class="login-form">
+
+      <div class="form-group">
+        <label>ชื่อผู้ใช้ :</label>
+        <input type="text" placeholder="กรุณากรอกชื่อผู้ใช้">
       </div>
 
-      <div class="text-left">
-        <label class="font-prompt font-bold text-sm">รหัสผ่าน :</label>
-        <input type="password"
-          placeholder="กรุณากรอกรหัสผ่าน"
-          class="w-full px-4 py-2 mt-2 rounded-[15px] focus:outline-none">
+      <div class="form-group">
+        <label>รหัสผ่าน :</label>
+        <input type="password" placeholder="กรุณากรอกรหัสผ่าน">
       </div>
 
-      <div>
-        <button class="font-bold w-full bg-black text-white py-2 rounded-[13px] mt-2 hover:bg-gray-800 ">
-        Sign In
-      </button>
+      <button class="login-btn">Sign In</button>
+
+      <div class="login-links">
+        <a href="#">สมัครสมาชิก</a>
+        <a href="#">ลืมรหัสผ่าน?</a>
       </div>
 
-      <div class="mt-4 text-sm flex justify-between font-prompt">
-        <a href="#" class="text-black hover:text-black transition">
-          สมัครสมาชิก
-        </a>
-
-       <a href="#" class="text-black hover:text-black transition">
-          ลืมรหัสผ่าน?
-       </a>
-      
-      </div>
     </form>
   </div>
-
 </body>
 </html>
