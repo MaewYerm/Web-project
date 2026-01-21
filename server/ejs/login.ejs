@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+
+  <link rel="stylesheet" href="css/login.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body class="login-bg">
+  <div class="login-card">
+
+    <img src="/image/project logo.png" class="logo">
+
+    <h2 class="title">
+      ระบบจัดการคลังชิ้นเนื้อโคขุน
+    </h2>
+
+    <p class="subtitle">
+      กรุณาเข้าสู่ระบบเพื่อจัดการคลังชิ้นเนื้อ
+    </p>
+
+    <form class="login-form" action="/dashboard" method="get">
+
+      <div class="form-group">
+        <label>ชื่อผู้ใช้ :</label>
+        <input type="text" placeholder="กรุณากรอกชื่อผู้ใช้">
+      </div>
+
+      <div class="form-group">
+        <label>รหัสผ่าน :</label>
+        <input type="password" placeholder="กรุณากรอกรหัสผ่าน">
+      </div>
+
+      <button class="login-btn">Sign In</button>
+
+      <div class="login-links">
+        <a href="#" class="open-modal" data-target="registerModal">สมัครสมาชิก</a>
+        <a href="#" class="open-modal" data-target="forgetpassModal">ลืมรหัสผ่าน?</a>
+      </div>
+    </form>
+  </div>
+
+  <div id="registerModal" class="modal hidden">
+    <div class="modal-card">
+      <h3 class="modal-title">สมัครสมาชิก</h3>
+      <h2 class="modal-subtitle">กรุณากรอกข้อมูลเพื่อสมัครสมาชิก</h2>
+
+      <!-- USERNAME -->
+      <form class="modal-form">
+        <div class="form-regis-group"><label>ชื่อผู้ใช้ ( Username )</label>
+          <input type="text" placeholder="ชื่อผู้ใช้">
+        </div>
+      </form>
+
+      <!-- PASSWORD -->
+      <form class="modal-form">
+        <div class="form-regis-group"><label>รหัสผ่าน ( Password )</label>
+          <input type="password" placeholder="รหัสผ่าน">
+        </div>
+      </form>
+
+      <!-- ชื่อ / นามสกุล -->
+      <div class="form-regis-row">
+        <form>
+          <div class="form-regis-group"><label>ชื่อ</label>
+            <input type="text" placeholder="ชื่อ">
+          </div>
+        </form>
+        <form class="modal-form">
+          <div class="form-regis-group"><label>นามสกุล</label>
+            <input type="text" placeholder="นามสกุล">
+          </div>
+        </form>
+      </div>
+
+      <!-- วันเกิด / อายุ -->
+      <div class="form-regis-row">
+        <div class="form-regis-group" style="flex:1;">
+          <label>วันเกิด</label>
+          <input type="date">
+        </div>
+
+        <div class="form-regis-group" style="flex:1;">
+          <label>อายุ</label>
+          <input type="number" placeholder="อายุ">
+        </div>
+      </div>
+
+      <!-- เพศ -->
+      <div class="form-regis-group">
+        <label>เพศ</label>
+        <select>
+          <option value="">เลือกเพศ</option>
+          <option>ชาย</option>
+          <option>หญิง</option>
+          <option>ไม่ระบุ</option>
+        </select>
+      </div>
+
+      <!-- เลขบัตร -->
+      <div class="form-regis-group">
+        <label>เลขบัตรประชาชน</label>
+        <input type="text" placeholder="13 หลัก">
+      </div>
+
+      <!-- สัญชาติ -->
+      <div class="form-regis-group">
+        <label>สัญชาติ</label>
+        <input type="text">
+      </div>
+
+      <!-- ที่อยู่ -->
+      <div class="form-regis-group">
+        <label>ที่อยู่</label>
+        <input type="text" placeholder="ที่อยู่">
+      </div>
+
+      <!-- เบอร์ / อีเมล -->
+      <div class="form-regis-row">
+        <div class="form-regis-group" style="flex:1;">
+          <label>เบอร์โทรศัพท์</label>
+          <input type="tel" placeholder="0XX-XXX-XXXX">
+        </div>
+
+        <div class="form-regis-group" style="flex:1;">
+          <label>อีเมล</label>
+          <input type="email" placeholder="example@email.com">
+        </div>
+      </div>
+
+      <!-- เบอร์สำรอง -->
+      <div class="form-regis-group">
+        <label>เบอร์โทรศัพท์สำรอง</label>
+        <input type="tel">
+      </div>
+
+      <!-- รูป -->
+      <div class="form-regis-group">
+        <label>รูปโปรไฟล์</label>
+        <input type="file">
+      </div>
+
+      <!-- ปุ่ม -->
+      <div class="modal-actions">
+        <button type="submit" class="btn-submit">สมัคร</button>
+        <button type="button" id="closeRegister" class="btn-cancel close-modal">ปิด</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="forgetpassModal" class="modal hidden">
+    <div class="modal-card">
+      <h2 class="modal-title">ลืมรหัสผ่าน</h2>
+      <p class="modal-subtitle">กรอกอีเมลเพื่อรีเซ็ตรหัสผ่าน</p>
+
+      <form class="modal-form">
+        <div class="form-regis-group">
+          <label>อีเมล</label>
+          <input type="email" placeholder="example@email.com">
+        </div>
+
+        <div class="modal-actions">
+          <button type="button" class="btn-cancel close-modal">ยกเลิก</button>
+          <button type="submit" class="btn-submit">ส่งลิงก์</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+  <script src="/js/register.js"></script>
+</body>
+
+</html>
