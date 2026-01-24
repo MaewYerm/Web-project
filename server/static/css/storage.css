@@ -1,0 +1,145 @@
+/* ===== หน้า Storage ===== */
+.page-2 {
+    display: none;
+    background: #FFE3E3;
+    margin: 0px 0px 0px 0px;
+    width: calc(100% - 40px);
+    padding: 24px;
+    border-radius: 16px;
+}
+
+.storage-box {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 50px;
+    margin: 20px 30px 24px 30px;
+}
+
+.storage-card {
+    background: white;
+    border-radius: 20px;
+    min-height: 250px;
+    padding: 20px;
+    outline: 1px solid #BEBEBE;
+    cursor: pointer;
+
+}
+
+.storage-card h3 {
+    margin: 0 0 4px;
+}
+
+.storage-card .name {
+    color: #00000071;
+    font-size: 20px;
+    font-weight: 1000;
+
+}
+
+.storage-card .type {
+    color: #777;
+    margin-top: 0px;
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+
+.storage-card .temp {
+    margin-top: 12px;
+    color: #777;
+    font-weight: bold;
+}
+
+.storage-card .temp-icon {
+    display: block;
+    background: #75D5FE;
+    padding: 15px;
+    border-radius: 50px;
+    height: 2px;
+    width: clamp(5px, 2vw, 20px);
+}
+
+.storage-card .temp-text {
+    width: clamp(5px, 8vw, 60px);
+    margin-top: 5px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    font-size: clamp(10px, 2vw, 20px);
+    font-weight: 1000;
+    color: #0066FF;
+}
+
+.storage-card .info {
+    color: #777;
+    margin-top: 12px;
+    font-weight: bold;
+}
+
+.info-layout {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.info-right {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+}
+
+.storage-card .subinfo {
+    color: #000000;
+    margin-top: 12px;
+    font-weight: bold;
+}
+
+
+
+
+.storage-detail-block {
+    background: white;
+    outline: 1px solid #BEBEBE;
+    margin: 0 30px 20px 30px;
+    border-radius: 20px;
+    min-height: 200px;
+    padding: 20px;
+    position: relative;
+    border-collapse: collapse;
+}
+
+.hidden {
+    display: none;
+}
+
+.detail-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.detail-table th {
+    text-align: center;
+    font-size: 14px;
+    color: #666;
+    padding-bottom: 8px;
+}
+
+.detail-table td {
+    padding: 10px 0;
+    border-top: 1px solid #eee;
+}
+
+.usage-bar {
+    width: 100%;
+    height: 12px;
+    background: #e5e5e5;
+    border-radius: 999px;
+    overflow: hidden;
+    margin-top: 8px;
+}
+
+.usage-fill {
+    height: 100%;
+    background: #4ade80;
+    border-radius: 999px;
+    transition: width 0.3s ease;
+}

@@ -1,0 +1,138 @@
+
+
+/* ===== LAYOUT SETTING ===== */
+
+body {
+    margin: 0;
+    font-family: 'Prompt', sans-serif;
+    background: #FFE3E3;
+    overflow: hidden;
+}
+
+.theme-font {
+    font-family: 'Prompt', sans-serif;
+}
+
+/* ===== HEADER ===== */
+header {
+    background: #7A1F1F;
+    color: white;
+    padding: 13px 50px;
+
+    background-image: url('/image/Noise & Texture dash 2.png');
+    background-size: auto;
+    background-repeat: repeat;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: clamp(16px, 2vw, 32px);
+    text-shadow: -1px 3px 0 #00000060;
+}
+
+.role-text {
+    margin: 0;
+    font-size: clamp(10px, 1vw, 16px);
+    font-weight: 1000;
+}
+
+.role-logo {
+    display: block;
+    background: #75D5FE;
+    padding: 15px;
+    border-radius: 50px;
+    outline: 1px solid #000;
+    box-shadow: 2px 4px 0 #00000060;
+    height: 1.5px;
+    width: clamp(10px, 4vw, 100px);
+}
+
+.role-logo-text {
+    width: clamp(10px, 4vw, 70px);
+    margin-top: 5px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    font-size: clamp(10px, 2vw, 20px);
+    font-weight: 1000;
+    color: #0066FF;
+    text-shadow: -1px 1px 0 #FFFFFF;
+}
+
+.logo {
+    width: 120px;
+    margin: 10px 10px;
+    display: block;
+    scale: 1.1;
+}
+
+.logo-bg {
+    display: block;
+    background: #FFFFFF;
+    padding: 15px;
+    border-radius: 50px;
+    outline: 1px solid #000;
+    box-shadow: 2px 4px 0 #00000060;
+    height: auto;
+    width: clamp(48px, 6vw, 132px);
+}
+
+
+/* ===== MENU ===== */
+.menu {
+    display: block;
+    gap: 0px;
+    padding: 5px;
+    background: #FFE3E3;
+    width: 20px;
+}
+
+.menu-bg {
+    display: flex;
+    background: #CDCDCD;
+    margin: 20px 60px 0px 60px;
+    padding: 6px;
+    border-radius: 50px;
+    height: 30px;
+    width: 90%;
+}
+
+
+.menu button {
+    border: none;
+    background: #CDCDCD;
+    width: clamp(100px, 12vw, 220px);
+    height: 30px;
+    padding: 0px;
+    border-radius: 999px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+
+    font-size: clamp(10px, 1vw, 17px);
+    font-weight: 800;
+    font-family: 'Prompt', sans-serif;
+    cursor: pointer;
+}
+
+.icon {
+    display: flex;
+}
+
+.menu button.active {
+    background: #FFFFFF;
+    color: rgb(0, 0, 0);
+}
+
+/* ===== CONTENT ===== */
+main {
+    padding: 0px;
+}

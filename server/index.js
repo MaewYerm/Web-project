@@ -12,6 +12,10 @@ app.get('/', (req, res) => {
     res.render('login')
 })
 
+app.get('/dashboard-staff', (req, res) => {
+    res.render('dashboard-staff')
+})
+
 app.listen(3000, '0.0.0.0', () => {
     console.log('Server is running on http://localhost:3000')
 })

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard</title>
+
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/component.css">  
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="css/storage.css">
+
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <header>
+    <div class="header-left">
+      <img src="/image/project logo.png" class="logo logo-bg">
+      <div>
+        <h1>ระบบจัดการคลังชิ้นเนื้อโคขุน</h1>
+        <div class="role-text">ผู้ใช้ : พนักงาน</div>
+        <div class="role-logo-text role-logo ">STAFF</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- เมนูด้านบน -->
+  <nav class="menu menu-bg">
+    <button class="active" data-page="stock"><img src="/image/Icon-box.png" class="icon">รายการชิ้นเนื้อคงคลัง</button>
+    <button data-page="location"><img src="/image/Icon-store.png" class="icon">สถานที่จัดเก็บ</button>
+    <button data-page="meat"><img src="/image/Icon-doc.png" class="icon">ข้อมูลชิ้นเนื้อ</button>
+    <button data-page="history"><img src="/image/Icon-doc.png" class="icon">ประวัติการทำรายการ</button>
+  </nav>
+
+
+
+  <main>
+    <!-- หน้ารายการชิ้นเนื้อ -->
+    <section id="stock" class="page-1 page active">
+      <div class="status-box">
+        <div class="card">
+          <h4>จำนวนชิ้นเนื้อภายในคลัง</h4>
+          <h1>0</h1>
+          <span>ชิ้นในสต็อก</span>
+        </div>
+
+        <div class="card">
+          <h4>น้ำหนักโดยรวม</h4>
+          <h1>0</h1>
+          <span>ทั้งหมดในคลัง</span>
+        </div>
+
+        <div class="card">
+          <h4>รายการชิ้นเนื้อที่เหลือน้อย</h4>
+          <h1>0</h1>
+          <span>รายการที่น้อยกว่า 10 ชิ้น</span>
+        </div>
+
+        <div class="card">
+          <h4>รายการชิ้นเนื้อที่ใกล้หมดอายุ</h4>
+          <h1>0</h1>
+          <span class="warn">รายการที่ใกล้หมดอายุแล้ว!</span>
+        </div>
+      </div>
+
+      <!-- 🔹 search -->
+      <div class="search-box">
+        <input type="text" class="theme-font" placeholder="ค้นหารายการ..." />
+      </div>
+
+      <!-- 🔹 table -->
+      <div class="table-box">
+        <table>
+          <thead>
+            <tr>
+              <th>หมายเลขรายการ</th>
+              <th>ชนิดเนื้อ</th>
+              <th>จำนวน</th>
+              <th>น้ำหนัก (kg)</th>
+              <th>สถานที่เก็บ</th>
+              <th>เจ้าของชิ้นเนื้อ</th>
+              <th>วันที่รับเข้า</th>
+              <th>วันหมดอายุ</th>
+              <th>ระยะเวลาการบ่ม</th>
+              <th>เกรดคุณภาพ</th>
+              <th>สถานะ</th>
+              <th>การจัดการ</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td colspan="12" class="empty">ไม่พบรายการสินค้าในคลัง</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- หน้าสถานที่จัดเก็บ -->
+    <section id="location" class="page-2 page">
+      <div id="storageList" class="storage-box"></div>
+
+      <!-- block รายการ (ซ่อนก่อน) -->
+      <div id="storageDetail" class="storage-detail-block hidden">
+        <h3 id="detailTitle"></h3>
+
+        <table class="detail-table">
+          <thead>
+            <tr>
+              <th>หมายเลขรายการ</th>
+              <th>ชนิดเนื้อ</th>
+              <th>จำนวน</th>
+              <th>น้ำหนัก (kg)</th>
+              <th>สถานที่</th>
+              <th>เจ้าของชิ้นเนื้อ</th>
+              <th>ระยะเวลาบ่ม</th>
+              <th>เกรดคุณภาพ</th>
+              <th>สถานะ</th>
+            </tr>
+          </thead>
+          <tbody id="detailBody">
+            <!-- JS ใส่ข้อมูล-->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+
+
+    <section id="meat" class="page inactive">
+      <h2>ข้อมูลชิ้นเนื้อ</h2>
+      <p>รายละเอียดเนื้อแต่ละประเภท</p>
+    </section>
+
+    <section id="history" class="page inactive">
+      <h2>ประวัติการทำรายการ</h2>
+      <p>ประวัติการเพิ่ม / จ่าย / แก้ไข</p>
+    </section>
+  </main>
+
+  <script src="/js/dashboard-staff.js"></script>
+  <script type="module" src="/js/storage.js"></script>
+</body>
+
+</html>
