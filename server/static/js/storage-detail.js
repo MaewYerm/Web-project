@@ -36,14 +36,14 @@ import { storageDetail } from './storage-data.js'
 //     ]
 // }
 
-const gradeBadgeMap = {
+export const gradeBadgeMap = {
     PREMIUM: 'gradebadge-PREMIUM',
     CHOICE: 'gradebadge-CHOICE',
     GOOD: 'gradebadge-GOOD',
     STANDARD: 'gradebadge-STANDARD'
 }
 
-function getStockStatus(qty) {
+export function getStockStatus(qty) {
     if (qty === 0) return { text: 'OUT OF STOCK', class: 'status-out' }
     if (qty <= 10) return { text: 'LOW STOCK', class: 'status-low' }
     return { text: 'IN STOCK', class: 'status-in' }

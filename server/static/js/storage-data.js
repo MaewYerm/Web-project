@@ -8,15 +8,19 @@ export const storageDetail = {
             owner: "ฟาร์มโคขุนดี",
             aging: "20",
             grade: "PREMIUM",
+            receivedAt: "2025-01-01",
+            expireAt: "2026-02-01"
         },
         {
             lot: "LOT-2025-12",
             type: "Striploin",
-            qty: 10,
+            qty: 8,
             weight: 20,
             owner: "ฟาร์มสุขใจ",
             aging: "21",
             grade: "CHOICE",
+            receivedAt: "2025-01-05",
+            expireAt: "2025-02-05"
         }
     ],
     "Cold Storage A1": [
@@ -28,6 +32,8 @@ export const storageDetail = {
             owner: "ฟาร์มสุขใจ",
             aging: "21",
             grade: "CHOICE",
+            receivedAt: "2025-01-03",
+            expireAt: "2025-03-01"
         }
     ],
     "Cold Storage A2": [
@@ -39,6 +45,8 @@ export const storageDetail = {
             owner: "ฟาร์มสุขใจ",
             aging: "10",
             grade: "STANDARD",
+            receivedAt: "2025-01-15",
+            expireAt: "2025-01-30"
         }
     ]
 };
@@ -69,3 +77,4 @@ export const storages = [
         capacity: 800,
     }
 ]
+

@@ -29,6 +29,8 @@ import { storageDetail } from './storage-data.js'
 //     }
 // ]
 
+
+
 const storageList = document.getElementById('storageList')
 
 function calcStorageSummary(storageName) {
@@ -68,7 +70,11 @@ storages.forEach(s => {
     card.className = 'storage-card'
 
     card.innerHTML = `
+    <div class='storage-card-title'>
+    <img src="/image/location_on.png" class="storage-card-logo">
     <h3>${s.name}</h3>
+    </div>
+    
     <div class="type">${s.type}</div>
 
     <div class="info-layout">
@@ -100,6 +106,7 @@ storages.forEach(s => {
     })
 
 })
+
 
 
 

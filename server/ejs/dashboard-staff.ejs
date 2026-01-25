@@ -6,9 +6,10 @@
   <title>Dashboard</title>
 
   <link rel="stylesheet" href="css/layout.css">
-  <link rel="stylesheet" href="css/component.css">  
+  <link rel="stylesheet" href="css/component.css">
   <link rel="stylesheet" href="css/dashboard.css">
   <link rel="stylesheet" href="css/storage.css">
+  <link rel="stylesheet" href="css/meat-info.css">
 
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -45,39 +46,51 @@
     <section id="stock" class="page-1 page active">
       <div class="status-box">
         <div class="card">
-          <h4>จำนวนชิ้นเนื้อภายในคลัง</h4>
-          <h1>0</h1>
-          <span>ชิ้นในสต็อก</span>
+          <div class="card-content">
+            <h4>จำนวนชิ้นเนื้อภายในคลัง</h4>
+            <h1 id="totalQty">0</h1>
+            <span>ชิ้นในสต็อก</span>
+          </div>
+          <img src="/image/meat.png" class="card-icon">
         </div>
 
         <div class="card">
-          <h4>น้ำหนักโดยรวม</h4>
-          <h1>0</h1>
-          <span>ทั้งหมดในคลัง</span>
+          <div class="card-content">
+            <h4>น้ำหนักโดยรวม</h4>
+            <h1 id="totalWeight">0</h1>
+            <span>ทั้งหมดในคลัง</span>
+          </div>
+          <img src="/image/weight.png" class="card-icon-2">
         </div>
 
         <div class="card">
-          <h4>รายการชิ้นเนื้อที่เหลือน้อย</h4>
-          <h1>0</h1>
-          <span>รายการที่น้อยกว่า 10 ชิ้น</span>
+          <div class="card-content">
+            <h4>รายการชิ้นเนื้อที่เหลือน้อย</h4>
+            <h1 id="lowStockCount">0</h1>
+            <span>รายการที่น้อยกว่า 10 ชิ้น</span>
+          </div>
+          <img src="/image/box.png" class="card-icon-3">
         </div>
 
         <div class="card">
-          <h4>รายการชิ้นเนื้อที่ใกล้หมดอายุ</h4>
-          <h1>0</h1>
-          <span class="warn">รายการที่ใกล้หมดอายุแล้ว!</span>
+          <div class="card-content">
+            <h4>รายการชิ้นเนื้อที่ใกล้หมดอายุ</h4>
+            <h1 id="nearExpireCount">0</h1>
+            <span>รายการที่ใกล้หมดอายุแล้ว!</span>
+          </div>
+          <img src="/image/warning.png" class="card-icon-4">
         </div>
       </div>
 
       <!-- 🔹 search -->
       <div class="search-box">
-        <input type="text" class="theme-font" placeholder="ค้นหารายการ..." />
+        <input type="text" class="theme-font" id="searchInput" placeholder="ค้นหารายการ..." />
       </div>
 
       <!-- 🔹 table -->
       <div class="table-box">
         <table>
-          <thead>
+          <thead class="dashboard-table">
             <tr>
               <th>หมายเลขรายการ</th>
               <th>ชนิดเนื้อ</th>
@@ -87,17 +100,14 @@
               <th>เจ้าของชิ้นเนื้อ</th>
               <th>วันที่รับเข้า</th>
               <th>วันหมดอายุ</th>
-              <th>ระยะเวลาการบ่ม</th>
+              <th>สถานะการหมดอายุ</th>
               <th>เกรดคุณภาพ</th>
-              <th>สถานะ</th>
+              <th>สถานะคลัง</th>
               <th>การจัดการ</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <td colspan="12" class="empty">ไม่พบรายการสินค้าในคลัง</td>
-            </tr>
-          </tbody>
+          <tbody id="stockTableBody"></tbody>
+          <tr></tr>
         </table>
       </div>
     </section>
@@ -132,10 +142,25 @@
     </section>
 
 
+    <!-- หน้าข้อมูลชิ้นเนื้อ -->
+    <section id="meat" class="page-3 page">
+      <div class="meat-info-card ">
 
-    <section id="meat" class="page inactive">
-      <h2>ข้อมูลชิ้นเนื้อ</h2>
-      <p>รายละเอียดเนื้อแต่ละประเภท</p>
+        <div class="meat-search-left">
+          <h2>ค้นหาข้อมูลชิ้นเนื้อ</h2>
+          <input type="text" class="theme-font" id="searchInput" placeholder="ค้นหารายการ..." />
+        </div>
+
+        <div class="meat-search-or">หรือ</div>
+
+        <div class="meat-search-right">
+          <h2>เลือกข้อมูลชิ้นเนื้อ</h2>
+              <select>
+                <option>LOT-2025-11 - Ribeye</option>
+              </select>
+        </div>
+      </div>
+
     </section>
 
     <section id="history" class="page inactive">
@@ -146,6 +171,7 @@
 
   <script src="/js/dashboard-staff.js"></script>
   <script type="module" src="/js/storage.js"></script>
+  <script type="module" src="/js/dashboard-info.js"></script>
 </body>
 
 </html>

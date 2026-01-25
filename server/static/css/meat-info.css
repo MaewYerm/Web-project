@@ -1,0 +1,54 @@
+/* ===== หน้า Storage ===== */
+.page-3 {
+    display: none;
+    background: #FFE3E3;
+    margin: 0px 0px 0px 0px;
+    width: calc(100% - 40px);
+    padding: 24px;
+    border-radius: 16px;
+}
+
+.meat-info-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    outline: 1px solid #BEBEBE;
+    margin: 15px 30px 20px 30px;
+    border-radius: 20px;
+    min-height: 100px;
+    padding: 20px;
+
+}
+
+.meat-search-left,
+.meat-search-right {
+    flex: 1;
+}
+
+.meat-search-left input,
+.meat-search-right select {
+    width: 90%;
+    margin: 0 30px 20px 30px;
+    padding: 15px 20px;
+    border-radius: 15px;
+    border: none;
+    outline: none;
+    background-color: #F0F0F0;
+    font-size: 14px;
+    font-weight: 800;
+}
+
+.meat-search-right label {
+    color: #000000;
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+.meat-search-or {
+    margin-top: 50px;
+    margin-left: 12px;
+    font-size: 30px;
+    font-weight: 800;
+    color: #747474;
+}
