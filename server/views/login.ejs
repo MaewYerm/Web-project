@@ -25,24 +25,26 @@
       กรุณาเข้าสู่ระบบเพื่อจัดการคลังชิ้นเนื้อ
     </p>
 
-    <form class="login-form" action="/dashboard-staff" method="get">
+    <form class="login-form" id="loginForm">
+      <p id="errorMsg" class="error" style="display:none;"></p>
 
       <div class="form-group">
         <label>ชื่อผู้ใช้ :</label>
-        <input type="text" placeholder="กรุณากรอกชื่อผู้ใช้">
+        <input type="text" name="username" placeholder="กรุณากรอกชื่อผู้ใช้">
       </div>
 
       <div class="form-group">
         <label>รหัสผ่าน :</label>
-        <input type="password" placeholder="กรุณากรอกรหัสผ่าน">
+        <input type="password" name="password" placeholder="กรุณากรอกรหัสผ่าน">
       </div>
 
-      <button class="login-btn">Sign In</button>
+          <p id="errorMsg" class="error" style="display:none;"></p>
+          <button type="submit" class="login-btn">Sign In</button>
 
-      <div class="login-links">
-        <a href="#" class="open-modal" data-target="registerModal">สมัครสมาชิก</a>
-        <a href="#" class="open-modal" data-target="forgetpassModal">ลืมรหัสผ่าน?</a>
-      </div>
+          <div class="login-links">
+            <a href="#" class="open-modal" data-target="registerModal">สมัครสมาชิก</a>
+            <a href="#" class="open-modal" data-target="forgetpassModal">ลืมรหัสผ่าน?</a>
+          </div>
     </form>
   </div>
 
@@ -80,10 +82,10 @@
       </div>
 
       <!-- วันเกิด / อายุ -->
-        <div class="form-regis-group" style="flex:1;">
-          <label>วันเกิด</label>
-          <input type="date">
-        </div>
+      <div class="form-regis-group" style="flex:1;">
+        <label>วันเกิด</label>
+        <input type="date">
+      </div>
 
       <!-- เพศ -->
       <div class="form-regis-group">
@@ -168,6 +170,7 @@
 
 
   <script src="/js/register.js"></script>
+  <script src="/js/login.js"></script>
 </body>
 
 </html>

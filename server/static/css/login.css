@@ -47,7 +47,7 @@ body {
   font-weight: 500;
   color: #6b7280;
   margin-top: 2px;
-  margin-bottom: 25px;
+  margin-bottom: 10px;
 }
 
 .login-form {
@@ -87,6 +87,13 @@ body {
 
 .login-btn:hover {
   background: #1f2937;
+}
+
+.error {
+  color: red;
+  font-size: 14px;
+  margin: 0px 0 0px;
+  text-align: center;
 }
 
 .login-links {

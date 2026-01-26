@@ -82,6 +82,7 @@ storages.forEach(s => {
         <div class="temp">อุณหภูมิที่กำหนด</div>    
         <div class="info">จำนวนรายการ</div>   
         <div class="info">น้ำหนักรวม</div>
+        <div class="info">ความจุที่จัดเก็บ</div>
         <div class="info">การใช้งาน</div>
      </div>
 
@@ -89,6 +90,7 @@ storages.forEach(s => {
         <div class="temp-icon temp-text">🌡 ${s.temp}</div>
         <div class="subinfo">${summary.totalItems} รายการ</div>
         <div class="subinfo">${summary.totalWeight} kg</div>
+        <div class="subinfo">${s.capacity} kg</div>
         <div class="subinfo">${usagePercent.toFixed(1)} %</div>
      </div>
     </div>
