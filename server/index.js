@@ -41,7 +41,8 @@ function requireLogin(req, res, next) {
   next();
 }
 
-app.get('/dashboard-staff', requireLogin, (req, res) => {
+app.get('/dashboard-staff', (req, res) => {
+  if (!req.session.user) return res.redirect('/');
   res.render('dashboard-staff');
 });
 

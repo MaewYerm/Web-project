@@ -6,6 +6,7 @@
     width: calc(100% - 40px);
     padding: 24px;
     border-radius: 16px;
+
 }
 
 .meat-info-card {
@@ -21,13 +22,16 @@
 
 }
 
-.meat-search-left,
-.meat-search-right {
+.meat-info-text {
+    margin-top: 0px;
+    margin-left: 30px;
+}
+
+.meat-search {
     flex: 1;
 }
 
-.meat-search-left input,
-.meat-search-right select {
+.meat-search select {
     width: 90%;
     margin: 0 30px 20px 30px;
     padding: 15px 20px;
@@ -39,16 +43,149 @@
     font-weight: 800;
 }
 
-.meat-search-right label {
+.meat-search label {
     color: #000000;
-    font-size: 14px;
+    font-size: 16px;
     white-space: nowrap;
 }
 
-.meat-search-or {
-    margin-top: 50px;
-    margin-left: 12px;
-    font-size: 30px;
-    font-weight: 800;
-    color: #747474;
+.meat-detail-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 24px;
+}
+
+.all-info-card {
+    margin: 15px 30px 0px 30px;
+}
+
+.meat-top {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 20px;
+}
+
+.info-box {
+    background: #fff;
+    border-radius: 16px;
+    padding: 20px 24px;
+    border: 1px solid #e8e8e8;
+}
+
+/* หัวข้อ box */
+.info-box h3 {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* =========================
+   กล่องข้อมูลพื้นฐาน
+========================= */
+.box-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.box-header-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.icon-information {
+    justify-content: right;
+    display: flex;
+}
+
+.lot-badge {
+    padding: 6px 12px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+
+
+
+/* row 2 คอลัมน์ */
+.row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.row span {
+    color: #666;
+}
+
+.row b {
+    font-weight: 600;
+}
+
+.owner-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+}
+
+.owner-grid .label {
+    font-size: 15px;
+    color: #999;
+    margin-top: 10px;
+}
+
+.owner-grid .value {
+    font-size: 20px;
+    font-weight: 500;
+    margin-top: 2px;
+}
+
+/* =========================
+   กล่องวันที่
+========================= */
+.date-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin: 15px 30px 20px 30px;
+}
+
+.date-grid span {
+    font-size: 15px;
+    color: #888;
+}
+
+.date-grid b {
+    display: block;
+    font-size: 20px;
+    margin-top: 4px;
+    font-weight: 700;
+}
+
+
+/* =========================
+   Responsive
+========================= */
+@media (max-width: 900px) {
+    .meat-top {
+        grid-template-columns: 1fr;
+    }
+
+    .owner-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .date-grid {
+        grid-template-columns: 1fr;
+    }
 }

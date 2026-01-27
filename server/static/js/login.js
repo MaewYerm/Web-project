@@ -2,24 +2,18 @@ const form = document.getElementById('loginForm');
 const errorMsg = document.getElementById('errorMsg');
 
 form.addEventListener('submit', async (e) => {
-    e.preventDefault(); // ไม่ให้เปลี่ยนหน้า
+    e.preventDefault();
 
     const username = form.username.value.trim();
     const password = form.password.value.trim();
 
-
-    // เช็คว่าง
-    if (!username || !password) {
-        errorMsg.style.display = 'block';
-        errorMsg.innerText = 'กรุณากรอกชื่อผู้ใช้และรหัสผ่าน';
-        return;
-    }
-
     const res = await fetch('/user/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
+        credentials: 'same-origin',
         body: JSON.stringify({ username, password })
     });
+
 
     const data = await res.json();
 
@@ -29,7 +23,9 @@ form.addEventListener('submit', async (e) => {
         return;
     }
 
-    // login ผ่าน
+    // เก็บ user
+    localStorage.setItem('user', JSON.stringify(data));
+
     window.location.href = '/dashboard-staff';
 });
 

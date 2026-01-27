@@ -88,7 +88,7 @@ export function toggleStorageDetail(storageName) {
                     <td>${i.qty}</td>
                     <td>${i.weight}</td>
                     <td>${storageName}</td>
-                    <td>${i.owner}</td>
+                    <td>${i.owner.name}</td>
                     <td>${i.aging} วัน</td>
                     <td>
                         <span class="gradebadge ${gradeBadgeMap[i.grade]}">${i.grade}</span>

@@ -1,3 +1,125 @@
+
+/* ===== ปุ่มเพิ่มรายการ ===== */
+.text-color-black {
+    color: rgb(0, 0, 0);
+}
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.hidden {
+  display: none;
+}
+
+.modal-card {
+  background: #fff;
+  width: 520px;
+  max-height: 90vh;
+  border-radius: 24px;
+  padding: 28px;
+  overflow-y: auto;
+  font-family: 'Prompt', sans-serif;
+
+  transform: translateY(30px) scale(0.95);
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.modal.show .modal-card {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+
+.modal-title {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 0px;
+}
+
+.modal-title-2 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-top: 15px;
+}
+
+.modal-subtitle {
+  font-size: 15px;
+  font-weight: 50;
+  margin-top: 0px;
+  margin-bottom: 15px;
+}
+
+.modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.form-insert-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-insert-group label {
+  font-size: 16px;
+  font-weight: 500;
+  margin-top: 5px;
+}
+
+.form-insert-group input,
+.form-insert-group select {
+  height: 40px;
+  padding: 0 14px;
+  border-radius: 12px;
+  border: 1px solid #e5e5e5;
+  margin-top: 1px;
+  margin-bottom: 4px;
+  outline: none;
+}
+
+.form-insert-row {
+  display: flex;
+  gap: 12px;
+}
+
+/* ปุ่ม */
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.btn-cancel {
+  background: #eee;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.btn-submit {
+  background: #000;
+  color: #fff;
+  border: none;
+  padding: 10px 22px;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.btn-submit:hover {
+  background: #1f2937;
+}
+
+
+
 /* ===== หน้า Dashboard ===== */
 .page-1 {
     display: none;

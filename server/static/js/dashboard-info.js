@@ -18,7 +18,10 @@ Object.values(storageDetail).forEach(items => {
       lowStockCount++
     }
 
-    // ถ้ายังไม่มีวันหมดอายุ ข้ามไปก่อนได้
+    if (i.expireAt && getStatus(i.expireAt) === "ใกล้หมดอายุ") {
+      nearExpireCount++
+    }
+
   })
 })
 
@@ -57,7 +60,7 @@ Object.entries(storageDetail).forEach(([location, items]) => {
       <td>${item.qty}</td>
       <td>${item.weight}</td>
       <td>${location}</td>
-      <td>${item.owner}</td>
+      <td>${item.owner.name}</td>
       <td>${item.receivedAt}</td>
       <td>${item.expireAt}</td>     
       <td>${getStatus(item.expireAt)}</td>

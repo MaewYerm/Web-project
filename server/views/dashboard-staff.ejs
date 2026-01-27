@@ -25,10 +25,172 @@
       <img src="/image/project logo.png" class="logo logo-bg">
       <div>
         <h1>ระบบจัดการคลังชิ้นเนื้อโคขุน</h1>
-        <div class="role-text">ผู้ใช้ : พนักงาน</div>
-        <div class="role-logo-text role-logo ">STAFF</div>
-      </div>
-    </div>
+        <div class="user-row">
+          <div class="user-text">
+            <div class="role-text" id="roleText">ผู้ใช้ : พนักงาน</div>
+            <div class="role-logo-text role-logo" id="roleBadge">STAFF</div>
+          </div>
+
+          <img id="profileImage" class="role-pic">
+        </div>
+        </div>
+
+        <div class="header-right">
+          <button class="btn-add theme-font open-modal" data-target="insertmodal">
+            <span class="icon">+</span> เพิ่มรายการ
+          </button>
+
+          <button id="logoutBtn" class="btn-logout theme-font">
+            ออกจากระบบ
+          </button>
+        </div>
+
+        <div id="insertmodal" class="modal hidden text-color-black">
+          <div class="modal-card">
+            <h3 class="modal-title ">เพิ่มรายการสินค้าคงคลัง</h3>
+            <h2 class="modal-subtitle ">กรอกรายละเอียดของเนื้อวัวที่ต้องการเพิ่มเข้าสู่ระบบ</h2>
+
+            <!-- หมายเลขรายการ -->
+            <form class="modal-form">
+              <div class="form-insert-group"><label>หมายเลขรายการ ( Lot Number )</label>
+                <input type="text" placeholder="หมายเลขรายการ">
+              </div>
+            </form>
+
+            <!-- ชนิดเนื้อ -->
+            <form class="modal-form">
+              <div class="form-insert-group"><label>ชนิดเนื้อ</label>
+                <select>
+                  <option value="">เลือกชนิดเนื้อ</option>
+                </select>
+              </div>
+            </form>
+
+            <!-- จำนวน / น้ำหนัก -->
+            <div class="form-insert-row">
+              <form>
+                <div class="form-insert-group"><label>จำนวน ( ชิ้น )</label>
+                  <input type="text">
+                </div>
+              </form>
+              <form class="modal-form">
+                <div class="form-insert-group"><label>น้ำหนัก ( กิโลกรัม )</label>
+                  <input type="text">
+                </div>
+              </form>
+            </div>
+
+            <!-- สถานที่เก็บ -->
+            <form class="modal-form">
+              <div class="form-insert-group"><label>สถานที่เก็บ</label>
+                <select>
+                  <option value="">เลือกสถานที่เก็บ</option>
+                </select>
+              </div>
+            </form>
+
+            <!-- วันที่รับเข้า / วันหมดอายุ -->
+            <div class="form-insert-row">
+              <form>
+                <div class="form-insert-group" style="flex:1;">
+                  <label>วันที่รับเข้า</label>
+                  <input type="date">
+                </div>
+              </form>
+              <form class="modal-form">
+                <div class="form-insert-group" style="flex:1;">
+                  <label>วันหมดอายุ</label>
+                  <input type="date">
+                </div>
+              </form>
+            </div>
+
+            <h3 class="modal-title-2">ข้อมูลเจ้าของชิ้นเนื้อ</h3>
+            <h2 class="modal-subtitle ">กรอกรายละเอียดของเจ้าของชิ้นเนื้อ</h2>
+
+            <!-- ชื่อเจ้าของชิ้นเนื้อ -->
+            <form class="modal-form">
+              <div class="form-insert-group"><label>ชื่อเจ้าของชิ้นเนื้อ</label>
+                <input type="text" placeholder="กรอกชื่อผู้จัดจำหน่าย">
+              </div>
+            </form>
+
+            <!-- เบอร์โทรศัพท์ / อีเมล -->
+            <div class="form-insert-row">
+              <form>
+                <div class="form-insert-group"><label>เบอร์โทรศัพท์</label>
+                  <input type="text" placeholder="0XX-XXX-XXXX">
+                </div>
+              </form>
+              <form class="modal-form">
+                <div class="form-insert-group"><label>อีเมล</label>
+                  <input type="text" placeholder="example@email.com">
+                </div>
+              </form>
+            </div>
+
+            <!-- LINE ID / FACEBOOK -->
+            <div class="form-insert-row">
+              <form>
+                <div class="form-insert-group"><label>LINE ID</label>
+                  <input type="text" placeholder="@lineid">
+                </div>
+              </form>
+              <form class="modal-form">
+                <div class="form-insert-group"><label>FACEBOOK</label>
+                  <input type="text" placeholder="facebook username">
+                </div>
+              </form>
+            </div>
+
+            <!-- หมายเลขสมาชิกสหกรณ์ -->
+            <div class="form-insert-group">
+              <label>หมายเลขสมาชิกสหกรณ์</label>
+              <input type="text" placeholder="กรอกหมายเลขสมาชิกสหกรณ์">
+            </div>
+
+            <!-- สัญชาติ -->
+            <div class="form-insert-group">
+              <label>สัญชาติ</label>
+              <input type="text">
+            </div>
+
+            <!-- ที่อยู่ -->
+            <div class="form-insert-group">
+              <label>ที่อยู่</label>
+              <input type="text" placeholder="ที่อยู่">
+            </div>
+
+            <!-- เบอร์ / อีเมล -->
+            <div class="form-insert-row">
+              <div class="form-insert-group" style="flex:1;">
+                <label>เบอร์โทรศัพท์</label>
+                <input type="tel" placeholder="0XX-XXX-XXXX">
+              </div>
+
+              <div class="form-insert-group" style="flex:1;">
+                <label>อีเมล</label>
+                <input type="email" placeholder="example@email.com">
+              </div>
+            </div>
+
+            <!-- เกรดคุณภาพ -->
+            <div class="form-insert-group">
+              <div class="form-insert-group"><label>เกรดคุณภาพ</label>
+                <select>
+                  <option value="">เลือกเกรดคุณภาพ</option>
+                </select>
+              </div>
+
+
+              <!-- ปุ่ม -->
+              <div class="modal-actions">
+                <button type="submit" class="btn-submit">เพิ่มรายการ</button>
+                <button type="button" id="closeRegister" class="btn-cancel close-modal">ปิด</button>
+              </div>
+            </div>
+          </div>
+
   </header>
 
   <!-- เมนูด้านบน -->
@@ -76,7 +238,7 @@
           <div class="card-content">
             <h4>รายการชิ้นเนื้อที่ใกล้หมดอายุ</h4>
             <h1 id="nearExpireCount">0</h1>
-            <span>รายการที่ใกล้หมดอายุแล้ว!</span>
+            <span>รายการที่ใกล้หมดอายุแล้ว! ( 7 วัน )</span>
           </div>
           <img src="/image/warning.png" class="card-icon-4">
         </div>
@@ -143,25 +305,19 @@
 
 
     <!-- หน้าข้อมูลชิ้นเนื้อ -->
-    <section id="meat" class="page-3 page">
-      <div class="meat-info-card ">
-
-        <div class="meat-search-left">
-          <h2>ค้นหาข้อมูลชิ้นเนื้อ</h2>
-          <input type="text" class="theme-font" id="searchInput" placeholder="ค้นหารายการ..." />
+    <div class="content">
+      <section id="meat" class="page-3 page">
+        <div class="meat-info-card ">
+          <div class="meat-search">
+            <h2 class="meat-info-text">เลือกข้อมูลชิ้นเนื้อ</h2>
+            <select id="meatSelect" class="theme-font">
+              <option value="">-- เลือกรายการชิ้นเนื้อ --</option>
+            </select>
+          </div>
         </div>
-
-        <div class="meat-search-or">หรือ</div>
-
-        <div class="meat-search-right">
-          <h2>เลือกข้อมูลชิ้นเนื้อ</h2>
-              <select>
-                <option>LOT-2025-11 - Ribeye</option>
-              </select>
-        </div>
-      </div>
-
-    </section>
+        <div id="meatResult" class="meat-result hidden"></div>
+      </section>
+    </div>
 
     <section id="history" class="page inactive">
       <h2>ประวัติการทำรายการ</h2>
@@ -170,6 +326,7 @@
   </main>
 
   <script src="/js/dashboard-staff.js"></script>
+  <script type="module" src="/js/information.js"></script>
   <script type="module" src="/js/storage.js"></script>
   <script type="module" src="/js/dashboard-info.js"></script>
 </body>

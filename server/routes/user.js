@@ -11,6 +11,11 @@ router.post('/login', userController.login);
 // ดูโปรไฟล์ตัวเอง
 router.get('/profile', userController.profile);
 
+
+// รูปโปรไฟล์
+router.get('/profile-pic', userController.profileImage);
+
+
 // logout
 router.get('/logout', userController.logout);
 

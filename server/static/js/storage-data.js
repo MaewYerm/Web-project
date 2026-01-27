@@ -9,18 +9,36 @@ export const storageDetail = {
             aging: "20",
             grade: "PREMIUM",
             receivedAt: "2025-01-01",
-            expireAt: "2026-02-01"
+            expireAt: "2026-02-01",
+
+            "owner": {
+                "name": "ฟาร์มโคขุนดี",
+                "phone": "081-123-4524",
+                "email": "santi.farm@email.com",
+                "lineId": "@santifarm",
+                "facebook": "ฟาร์มโคขุนสันติพะเยา",
+                "memberId": "888888888888"
+            }
         },
         {
             lot: "LOT-2025-12",
             type: "Striploin",
             qty: 8,
             weight: 20,
-            owner: "ฟาร์มสุขใจ",
+            owner: "ฟาร์มโคสุขใจ",
             aging: "21",
             grade: "CHOICE",
             receivedAt: "2025-01-05",
-            expireAt: "2025-02-05"
+            expireAt: "2025-02-05",
+
+            "owner": {
+                "name": "ฟาร์มโคสุขใจ",
+                "phone": "098-898-8988",
+                "email": "happycow@email.com",
+                "lineId": "@happycow",
+                "facebook": "ฟาร์มโคสุขใจพะเยา",
+                "memberId": "987654321235"
+            }
         }
     ],
     "Cold Storage A1": [
@@ -29,11 +47,20 @@ export const storageDetail = {
             type: "T-Bone",
             qty: 100,
             weight: 342.5,
-            owner: "ฟาร์มสุขใจ",
+            owner: "ฟาร์มน้องเอื้อง",
             aging: "21",
             grade: "CHOICE",
             receivedAt: "2025-01-03",
-            expireAt: "2025-03-01"
+            expireAt: "2025-03-01",
+
+            "owner": {
+                "name": "ฟาร์มน้องเอื้อง",
+                "phone": "088-888-8888",
+                "email": "euangnoi@email.com",
+                "lineId": "@euangnoi",
+                "facebook": "เอื้องดอยฟาร์ม",
+                "memberId": "12345678989"
+            }
         }
     ],
     "Cold Storage A2": [
@@ -46,7 +73,16 @@ export const storageDetail = {
             aging: "10",
             grade: "STANDARD",
             receivedAt: "2025-01-15",
-            expireAt: "2025-01-30"
+            expireAt: "2025-01-30",
+
+            "owner": {
+                "name": "ฟาร์มสุขใจ",
+                "phone": "088-888-8888",
+                "email": "happy.farm@email.com",
+                "lineId": "@happyfarm",
+                "facebook": "HAPPY FARMER",
+                "memberId": "576842531951"
+            }
         }
     ]
 };
