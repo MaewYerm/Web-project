@@ -2,15 +2,6 @@ const express = require('express');
 const router = express.Router();
 const storageController = require('../controllers/storage.controller');
 
-// ดู storage ทั้งหมด
-router.get('/', storageController.getAll);
-
-// ดู storage ตาม id
-router.get('/:id', storageController.getById);
-
-// ดูเนื้อใน storage 
-router.get('/:id/beef', storageController.getBeefInStorage);
-
 // เพิ่ม storage
 router.post('/', storageController.create);
 
@@ -19,5 +10,9 @@ router.put('/:id', storageController.update);
 
 // ลบ storage
 router.delete('/:id', storageController.remove);
+
+// ข้อมูลทั้งหมด
+router.get('/', storageController.getAll)
+
 
 module.exports = router;

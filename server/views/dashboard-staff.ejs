@@ -10,11 +10,15 @@
   <link rel="stylesheet" href="css/dashboard.css">
   <link rel="stylesheet" href="css/storage.css">
   <link rel="stylesheet" href="css/meat-info.css">
+  <link rel="stylesheet" href="css/history.css">
+  <link rel="stylesheet" href="css/setting.css">
 
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+
 
 </head>
 
@@ -33,172 +37,151 @@
 
           <img id="profileImage" class="role-pic">
         </div>
-        </div>
+      </div>
 
-        <div class="header-right">
-          <button class="btn-add theme-font open-modal" data-target="insertmodal">
-            <span class="icon">+</span> เพิ่มรายการ
-          </button>
+      <div class="header-right">
+        <button class="btn-add theme-font open-modal" data-target="insertmodal">
+          <span class="icon">+</span> เพิ่มรายการ
+        </button>
 
-          <button id="logoutBtn" class="btn-logout theme-font">
-            ออกจากระบบ
-          </button>
-        </div>
+        <button id="logoutBtn" class="btn-logout theme-font">
+          ออกจากระบบ
+        </button>
+      </div>
 
-        <div id="insertmodal" class="modal hidden text-color-black">
-          <div class="modal-card">
-            <h3 class="modal-title ">เพิ่มรายการสินค้าคงคลัง</h3>
-            <h2 class="modal-subtitle ">กรอกรายละเอียดของเนื้อวัวที่ต้องการเพิ่มเข้าสู่ระบบ</h2>
+      <div id="insertmodal" class="modal hidden text-color-black">
+        <div class="modal-card">
+          <h3 class="modal-title">เพิ่มรายการสินค้าคงคลัง</h3>
+          <h2 class="modal-subtitle">กรอกรายละเอียดของเนื้อวัวที่ต้องการเพิ่ม</h2>
 
-            <!-- หมายเลขรายการ -->
-            <form class="modal-form">
-              <div class="form-insert-group"><label>หมายเลขรายการ ( Lot Number )</label>
-                <input type="text" placeholder="หมายเลขรายการ">
-              </div>
-            </form>
+          <form id="insertBeefForm">
+
+            <!-- Lot -->
+            <div class="form-insert-group">
+              <label>หมายเลขรายการ (Lot Number)</label>
+              <input id="lot_id" type="text" required>
+            </div>
 
             <!-- ชนิดเนื้อ -->
-            <form class="modal-form">
-              <div class="form-insert-group"><label>ชนิดเนื้อ</label>
-                <select>
-                  <option value="">เลือกชนิดเนื้อ</option>
-                </select>
-              </div>
-            </form>
+            <div class="form-insert-group">
+              <label>ชนิดเนื้อ</label>
+              <select id="beef_type_id" class="theme-font" required>
+                <option value="">เลือกชนิดเนื้อ</option>
+              </select>
+            </div>
 
             <!-- จำนวน / น้ำหนัก -->
             <div class="form-insert-row">
-              <form>
-                <div class="form-insert-group"><label>จำนวน ( ชิ้น )</label>
-                  <input type="text">
-                </div>
-              </form>
-              <form class="modal-form">
-                <div class="form-insert-group"><label>น้ำหนัก ( กิโลกรัม )</label>
-                  <input type="text">
-                </div>
-              </form>
+              <div class="form-insert-group">
+                <label>จำนวน (ชิ้น)</label>
+                <input id="qty" type="number" required>
+              </div>
+              <div class="form-insert-group">
+                <label>น้ำหนัก (กก.)</label>
+                <input id="weight" type="number" step="0.01" required>
+              </div>
             </div>
 
             <!-- สถานที่เก็บ -->
-            <form class="modal-form">
-              <div class="form-insert-group"><label>สถานที่เก็บ</label>
-                <select>
-                  <option value="">เลือกสถานที่เก็บ</option>
-                </select>
-              </div>
-            </form>
+            <div class="form-insert-group">
+              <label>สถานที่เก็บ</label>
+              <select id="storage_id" class="theme-font" required>
+                <option value="">เลือกสถานที่เก็บ</option>
+              </select>
+            </div>
 
-            <!-- วันที่รับเข้า / วันหมดอายุ -->
+            <!-- วันที่ -->
             <div class="form-insert-row">
-              <form>
-                <div class="form-insert-group" style="flex:1;">
-                  <label>วันที่รับเข้า</label>
-                  <input type="date">
-                </div>
-              </form>
-              <form class="modal-form">
-                <div class="form-insert-group" style="flex:1;">
-                  <label>วันหมดอายุ</label>
-                  <input type="date">
-                </div>
-              </form>
+              <div class="form-insert-group">
+                <label>วันที่รับเข้า</label>
+                <input class="theme-font" id="receive_date" type="date" required>
+              </div>
+              <div class="form-insert-group">
+                <label>วันหมดอายุ</label>
+                <input class="theme-font" id="expired_date" type="date" required>
+              </div>
             </div>
 
             <h3 class="modal-title-2">ข้อมูลเจ้าของชิ้นเนื้อ</h3>
-            <h2 class="modal-subtitle ">กรอกรายละเอียดของเจ้าของชิ้นเนื้อ</h2>
 
-            <!-- ชื่อเจ้าของชิ้นเนื้อ -->
-            <form class="modal-form">
-              <div class="form-insert-group"><label>ชื่อเจ้าของชิ้นเนื้อ</label>
-                <input type="text" placeholder="กรอกชื่อผู้จัดจำหน่าย">
+            <div class="form-insert-group">
+              <label>ชื่อเจ้าของ</label>
+              <input id="owner_name" type="text" required>
+            </div>
+
+            <div class="form-insert-row">
+              <div class="form-insert-group">
+                <label>เบอร์โทร</label>
+                <input id="owner_tel" type="text" class="theme-font" placeholder="กรุณากรอกเบอร์ติดต่อ">
               </div>
-            </form>
-
-            <!-- เบอร์โทรศัพท์ / อีเมล -->
-            <div class="form-insert-row">
-              <form>
-                <div class="form-insert-group"><label>เบอร์โทรศัพท์</label>
-                  <input type="text" placeholder="0XX-XXX-XXXX">
-                </div>
-              </form>
-              <form class="modal-form">
-                <div class="form-insert-group"><label>อีเมล</label>
-                  <input type="text" placeholder="example@email.com">
-                </div>
-              </form>
+              <div class="form-insert-group">
+                <label>อีเมล</label>
+                <input id="owner_email" type="email" class="theme-font" placeholder="example@email.com">
+              </div>
             </div>
 
-            <!-- LINE ID / FACEBOOK -->
-            <div class="form-insert-row">
-              <form>
-                <div class="form-insert-group"><label>LINE ID</label>
-                  <input type="text" placeholder="@lineid">
-                </div>
-              </form>
-              <form class="modal-form">
-                <div class="form-insert-group"><label>FACEBOOK</label>
-                  <input type="text" placeholder="facebook username">
-                </div>
-              </form>
+            <div class="form-insert-group">
+              <label>LINE ID</label>
+              <input id="owner_lineid" type="text" class="theme-font" placeholder="@lineid">
             </div>
 
-            <!-- หมายเลขสมาชิกสหกรณ์ -->
+            <div class="form-insert-group">
+              <label>Facebook</label>
+              <input id="owner_facebook" type="text">
+            </div>
+
             <div class="form-insert-group">
               <label>หมายเลขสมาชิกสหกรณ์</label>
-              <input type="text" placeholder="กรอกหมายเลขสมาชิกสหกรณ์">
+              <input id="owner_coop_id" type="text" class="theme-font" placeholder="กรอกหมายเลขสหกรณ์ 13 หลัก">
             </div>
 
-            <!-- สัญชาติ -->
             <div class="form-insert-group">
-              <label>สัญชาติ</label>
-              <input type="text">
+              <label>การบ่ม Aging ( วัน )</label>
+              <input id="aging" type="text" class="theme-font" placeholder="กรอกเวลาที่บ่มมาแล้ว">
             </div>
 
-            <!-- ที่อยู่ -->
             <div class="form-insert-group">
-              <label>ที่อยู่</label>
-              <input type="text" placeholder="ที่อยู่">
+              <label>เกรดคุณภาพ</label>
+              <select id="grade_id" class="theme-font" required>
+                <option value="">เลือกเกรด</option>
+              </select>
             </div>
 
-            <!-- เบอร์ / อีเมล -->
-            <div class="form-insert-row">
-              <div class="form-insert-group" style="flex:1;">
-                <label>เบอร์โทรศัพท์</label>
-                <input type="tel" placeholder="0XX-XXX-XXXX">
-              </div>
-
-              <div class="form-insert-group" style="flex:1;">
-                <label>อีเมล</label>
-                <input type="email" placeholder="example@email.com">
-              </div>
+            <div class="reason-insert-group" id="edit-reason-box">
+              <label>เหตุผลในการแก้ไข</label>
+              <textarea id="edit_reason" rows="3" placeholder="กรุณาระบุเหตุผลในการแก้ไขข้อมูล"></textarea>
             </div>
 
-            <!-- เกรดคุณภาพ -->
-            <div class="form-insert-group">
-              <div class="form-insert-group"><label>เกรดคุณภาพ</label>
-                <select>
-                  <option value="">เลือกเกรดคุณภาพ</option>
-                </select>
-              </div>
 
-
-              <!-- ปุ่ม -->
-              <div class="modal-actions">
-                <button type="submit" class="btn-submit">เพิ่มรายการ</button>
-                <button type="button" id="closeRegister" class="btn-cancel close-modal">ปิด</button>
-              </div>
+            <!-- ปุ่ม -->
+            <div class="modal-actions">
+              <button type="button" id="submitBeef" class="btn-submit theme-font">
+                เพิ่มรายการ
+              </button>
+              <button type="button" class="btn-cancel close-modal theme-font">
+                ปิด
+              </button>
             </div>
-          </div>
+
+          </form>
+        </div>
+      </div>
+
 
   </header>
 
   <!-- เมนูด้านบน -->
-  <nav class="menu menu-bg">
+  <nav class="menu menu-bg top-nav button">
     <button class="active" data-page="stock"><img src="/image/Icon-box.png" class="icon">รายการชิ้นเนื้อคงคลัง</button>
     <button data-page="location"><img src="/image/Icon-store.png" class="icon">สถานที่จัดเก็บ</button>
     <button data-page="meat"><img src="/image/Icon-doc.png" class="icon">ข้อมูลชิ้นเนื้อ</button>
     <button data-page="history"><img src="/image/Icon-doc.png" class="icon">ประวัติการทำรายการ</button>
+    <% if (user && user.role==='admin' ) { %>
+      <button data-page="setting">
+        <img src="/image/Icon-setting.png" class="icon">
+        ตั้งค่าระบบ
+      </button>
+      <% } %>
   </nav>
 
 
@@ -319,15 +302,257 @@
       </section>
     </div>
 
-    <section id="history" class="page inactive">
-      <h2>ประวัติการทำรายการ</h2>
-      <p>ประวัติการเพิ่ม / จ่าย / แก้ไข</p>
+
+    <section id="history" class="page-4 page">
+
+      <!-- ===== Summary Cards ===== -->
+      <div class="history-box">
+        <div class="his-card">
+          <h4 class="title">รายการทั้งหมด</h4>
+          <h1>1</h1>
+        </div>
+
+        <div class="his-card">
+          <h4 class="title">นำเข้า</4>
+            <h1 class="green">1</h1>
+        </div>
+
+        <div class="his-card">
+          <h4 class="title">แก้ไขรายการ</h4>
+          <h1 class="blue">1</h1>
+        </div>
+
+        <div class="his-card">
+          <h4 class="title">ลบรายการ</h4>
+          <h1 class="red">1</h1>
+        </div>
+
+        <div class="his-card">
+          <h4 class="title">เบิกออก</h4>
+          <h1 class="orange">1</h1>
+        </div>
+
+      </div>
+
+      <!-- ===== Filter ===== -->
+      <div class="history-filter">
+        <h3>🔍 ตัวกรอง</h3>
+
+        <div class="filter-row">
+          <div>
+            <label>ประเภทการทำงาน</label>
+            <select name="action">
+              <option value="ALL">ทั้งหมด</option>
+              <option value="INSERT">INSERT</option>
+              <option value="UPDATE">UPDATE</option>
+              <option value="DELETE">DELETE</option>
+              <option value="WITHDRAW">WITHDRAW</option>
+            </select>
+          </div>
+
+          <div>
+            <label>ช่วงเวลา</label>
+            <select name="range">
+              <option value="ALL">ทั้งหมด</option>
+              <option value="TODAY">วันนี้</option>
+              <option value="7DAYS">7 วันล่าสุด</option>
+              <option value="30DAYS">30 วันล่าสุด</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== History Table ===== -->
+      <div class="history-table">
+        <h3>🕒 ประวัติการทำรายการ</h3>
+
+        <table>
+          <thead>
+            <tr>
+              <th>วันที่/เวลา</th>
+              <th>การกระทำ</th>
+              <th>หมายเลขรายการ</th>
+              <th>ชนิดเนื้อ</th>
+              <th>จำนวนเดิม</th>
+              <th>จำนวนใหม่</th>
+              <th>การเปลี่ยนแปลง</th>
+              <th>น้ำหนัก (kg)</th>
+              <th>ผู้ทำรายการ</th>
+              <th>รายละเอียด</th>
+            </tr>
+          </thead>
+
+          <tbody id="history-body">
+            <!-- JS render -->
+          </tbody>
+        </table>
+      </div>
+
+    </section>
+
+
+
+
+
+    <section id="setting" class="page-5 page">
+      <nav class="sub-menu sub-menu-bg">
+        <button data-page="user-setting"><img src="/image/Icon-doc.png" class="icon">จัดการผู้ใช้</button>
+        <button data-page="storage-setting"><img src="/image/Icon-doc.png" class="icon">สถานที่จัดเก็บ</button>
+      </nav>
+
+      <section id="user-setting" class="page-5-1 sub-page">
+        <div class="card">
+          <div>
+            <h3 class="setting-header">รายการผู้ใช้งาน</h3>
+            <p class="setting-header-sub">จัดการบัญชีผู้ใช้งานระบบ</p>
+          </div>
+
+          <table class="user-table">
+            <thead>
+              <tr>
+                <th>ชื่อผู้ใช้</th>
+                <th>ชื่อ - นามสกุล</th>
+                <th>สิทธิ์</th>
+                <th>การจัดการ</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <% users.forEach(u=> { %>
+                <tr>
+                  <td><strong>
+                      <%= u.username %>
+                    </strong></td>
+
+                  <td>
+                    <%= u.firstname %>
+                      <%= u.lastname %>
+                  </td>
+
+                  <td>
+                    <span>
+                      <%= u.role_id===1 ? 'ผู้ดูแลระบบ' : 'พนักงาน' %>
+                    </span>
+                  </td>
+
+                  <td class="action">
+                    <!-- ดูรายละเอียด -->
+                    <button class="btn-eye open-modal" data-user-id="<%= u.user_id %>"
+                      data-self="<%= user.id === u.user_id %>" data-username="<%= u.username %>"
+                      data-firstname="<%= u.firstname %>" data-lastname="<%= u.lastname %>"
+                      data-birthday="<%= u.birthday %>" data-citizen="<%= u.citizen_id %>"
+                      data-address="<%= u.address %>" data-nation="<%= u.nation %>" data-tel-main="<%= u.tel_main %>"
+                      data-tel-sub="<%= u.tel_sub || '-' %>" data-email="<%= u.email %>"
+                      data-role="<%= u.role_id === 1 ? 'ผู้ดูแลระบบ' : 'พนักงาน' %>"
+                      data-gender="<%= u.gender_id === 1 ? 'ชาย' : 'หญิง' %>" data-target="display-info">
+                      <img src="/image/eye.png"></button>
+                    <div id="display-info" class="modal hidden">
+                      <div class="modal-card">
+                        <div class="modal-title">ข้อมูลผู้ใช้งาน</div>
+
+                        <div class="modal-body">
+
+                          <div class="user-info">
+                            <p>ชื่อผู้ใช้: <strong id="m-username"></strong></p>
+                            <p>ชื่อ–นามสกุล: <strong id="m-name"></strong></p>
+                            <p>วันเกิด: <strong id="m-birthday"></strong></p>
+                            <p>เลขบัตรประชาชน: <strong id="m-citizen"></strong></p>
+                            <p>ที่อยู่: <strong id="m-address"></strong></p>
+                            <p>สัญชาติ: <strong id="m-nation"></strong></p>
+                            <p>โทรศัพท์หลัก: <strong id="m-tel-main"></strong></p>
+                            <p>โทรศัพท์สำรอง: <strong id="m-tel-sub"></strong></p>
+                            <p>Email: <strong id="m-email"></strong></p>
+                            <p>เพศ: <strong id="m-gender"></strong></p>
+                            <p>
+                              สิทธิ์ปัจจุบัน:
+                              <strong id="m-role"></strong>
+                              <select id="m-role-select" class="role-select">
+                                <option value="1">ผู้ดูแลระบบ</option>
+                                <option value="2">พนักงาน</option>
+                              </select>
+                            </p>
+                            <div class="modal-footer">
+                              <button id="save-role" class="btn-info-save">บันทึกการเปลี่ยนสิทธิ์</button>
+                            </div>
+                          </div>
+
+                          <div class="user-photo">
+                            <img id="modal-photo" src="/image/default.png" alt="profile">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+        </div>
+
+        <!-- ลบ -->
+        <button data-id="<%= u.user_id %>" class="btn-eye btn-user-delete" data-self="<%= user.id === u.user_id %>"
+          <%=user.id===u.user_id ? 'disabled' : '' %> >
+          <img src="/image/bin.png"></button>
+        </td>
+
+        </tr>
+        <% }) %>
+          </tbody>
+          </table>
+          </div>
+      </section>
+
+      <section id="storage-setting" class="page-5-2 sub-page">
+        <div class="storage-card">
+          <div class="st-card-title">เพิ่มสถานที่เก็บ</div>
+          <div class="st-card-subtitle">ใส่ข้อมูลเพื่อเพิ่มสถานที่จัดเก็บ</div>
+
+          <form id="storageForm">
+            <div class="st-form-group">
+              <label>ชื่อสถานที่เก็บ</label>
+              <input type="text" name="storage_name" placeholder="เช่น Freezer A1" required>
+            </div>
+
+            <div class="st-form-group">
+              <label>ความจุ</label>
+              <input type="number" step="0.01" name="capacity" placeholder="เช่น 500" required>
+            </div>
+
+            <div class="st-form-group">
+              <label>อุณหภูมิที่กำหนด (°C)</label>
+              <input type="number" step="0.1" name="temperature" placeholder="เช่น -18" required>
+            </div>
+
+            <div class="st-form-group">
+              <label>ประเภทของสถานที่เก็บ</label>
+              <input type="text" name="storage_type" placeholder="เช่น ตู้แช่แข็ง" required>
+            </div>
+
+            <div class="st-form-actions">
+              <button class="theme-font" type="submit">เพิ่มสถานที่เก็บ</button>
+            </div>
+          </form>
+
+          <hr class="st-divider">
+
+          <div class="st-list-title">สถานที่จัดเก็บทั้งหมด</div>
+
+          <div id="storageList-setting" class="st-storage-list">
+            <!-- render จาก JS -->
+          </div>
+
+
+
+        </div>
+
+
+      </section>
     </section>
   </main>
 
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="/js/dashboard-staff.js"></script>
+  <script src="/js/admin-setting.js"></script>
+  <script src="/js/insertbeef.js"></script>
+  <script src="/js/history.js"></script>
   <script type="module" src="/js/information.js"></script>
   <script type="module" src="/js/storage.js"></script>
+  <script type="module" src="/js/storage-detail.js"></script>
   <script type="module" src="/js/dashboard-info.js"></script>
 </body>
 

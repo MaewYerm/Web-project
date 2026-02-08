@@ -1,40 +1,40 @@
 
-import { storageDetail } from './storage-data.js'
+let storageDetail = {}
 
-// const storageDetail = {
-//     "Freezer A1": [
-//         {
-//             lot: "LOT-2025-11",
-//             type: "Ribeye",
-//             qty: 42,
-//             weight: 102.5,
-//             owner: "ฟาร์มโคขุนดี",
-//             aging: "20",
-//             grade: "PREMIUM",
-//         },
-//         {
-//             lot: "LOT-2025-20",
-//             type: "Striploin",
-//             qty: 10,
-//             weight: 20,
-//             owner: "ฟาร์มสุขใจ",
-//             aging: "21",
-//             grade: "CHOICE",
-//         }
-//     ],
-//     "Cold Storage A1": [],
-//     "Cold Storage A2": [
-//         {
-//             lot: "LOT-2025-20",
-//             type: "Striploin",
-//             qty: 10,
-//             weight: 20,
-//             owner: "ฟาร์มสุขใจ",
-//             aging: "10",
-//             grade: "STANDARD",
-//         }
-//     ]
-// }
+export async function initStock() {
+    const res = await fetch('/api/stock')
+    const data = await res.json()
+
+    storageDetail = {}
+
+    data.forEach(i => {
+        const storageName = i.storage_name   // 👈 ใช้ชื่อจริงจาก DB
+
+        if (!storageDetail[storageName]) {
+            storageDetail[storageName] = []
+        }
+        storageDetail[storageName].push(i)
+    })
+}
+
+export function formatDate(dateStr) {
+  if (!dateStr) return '-'
+  const d = new Date(dateStr)
+
+  return d.toLocaleDateString('th-TH', {
+    day: '2-digit',
+    month: '2-digit',
+    year: 'numeric'
+  })
+}
+
+
+export function getStorageDetail() {
+    return storageDetail
+}
+
+export { storageDetail }   // 👈 ต้อง export ด้วย
+
 
 export const gradeBadgeMap = {
     PREMIUM: 'gradebadge-PREMIUM',
@@ -81,29 +81,35 @@ export function toggleStorageDetail(storageName) {
     } else {
         items.forEach(i => {
             const stock = getStockStatus(i.qty)
+            const gradeKey = i.grade?.toUpperCase()
             body.innerHTML += `
                 <tr>
-                    <td>${i.lot}</td>
+                    <td>${i.lot_id}</td>
                     <td>${i.type}</td>
                     <td>${i.qty}</td>
                     <td>${i.weight}</td>
-                    <td>${storageName}</td>
-                    <td>${i.owner.name}</td>
+                     <td>${storageName}</td>
+                    <td>${i.owner}</td>
                     <td>${i.aging} วัน</td>
+                     <td>
+                         <span class="gradebadge ${gradeBadgeMap[gradeKey] || ''}">
+                         ${i.grade}
+                         </span>
+                     </td>
                     <td>
-                        <span class="gradebadge ${gradeBadgeMap[i.grade]}">${i.grade}</span>
+                         <span class="status ${stock.class}">
+                         ${stock.text}
+                         </span>
                     </td>
-                    <td>   
-                        <span class="status ${stock.class}">
-                        ${stock.text}
-                        </span>
-                    </td>
-                </tr>
-            `
+                    </tr>
+                 `
         })
+
     }
 
     detailBlock.classList.remove('hidden')
     detailBlock.scrollIntoView({ behavior: 'smooth' })
 }
+
+
 

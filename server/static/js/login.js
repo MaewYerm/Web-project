@@ -29,3 +29,7 @@ form.addEventListener('submit', async (e) => {
     window.location.href = '/dashboard-staff';
 });
 
+form.addEventListener('input', () => {
+  errorMsg.style.display = 'none';
+});
+

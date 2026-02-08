@@ -1,6 +1,5 @@
 /* ===== หน้า Storage ===== */
 .page-3 {
-    display: none;
     background: #FFE3E3;
     margin: 0px 0px 0px 0px;
     width: calc(100% - 40px);
@@ -111,9 +110,6 @@
     font-size: 18px;
     font-weight: 600;
 }
-
-
-
 
 /* row 2 คอลัมน์ */
 .row {

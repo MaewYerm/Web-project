@@ -1,12 +1,12 @@
-
 /* ===== ปุ่มเพิ่มรายการ ===== */
 .text-color-black {
-    color: rgb(0, 0, 0);
+  color: rgb(0, 0, 0);
 }
+
 .modal {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.45);
+  background: rgba(0, 0, 0, 0.45);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -61,13 +61,37 @@
   gap: 14px;
 }
 
+.reason-insert-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.reason-insert-group textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-family: inherit;
+  resize: vertical;
+  margin-top: 1px;
+}
+
 .form-insert-group {
   display: flex;
   flex-direction: column;
   gap: 6px;
 }
 
+
 .form-insert-group label {
+  font-size: 16px;
+  font-weight: 500;
+  margin-top: 5px;
+}
+
+.reason-insert-group label {
   font-size: 16px;
   font-weight: 500;
   margin-top: 5px;
@@ -122,139 +146,155 @@
 
 /* ===== หน้า Dashboard ===== */
 .page-1 {
-    display: none;
-    background: #FFE3E3;
-    margin: 0px 0px 0px 0px;
-    width: calc(100% - 40px);
-    padding: 24px;
-    border-radius: 16px;
+  background: #FFE3E3;
+  margin: 0px 0px 0px 0px;
+  width: calc(100% - 40px);
+  padding: 24px;
+  border-radius: 16px;
 }
 
-.page.active {
-    display: block;
+.page,
+.sub-page {
+  display: none;
 }
 
-.page.inactive {
-    display: none;
+.page.active,
+.sub-page.active {
+  display: block;
 }
 
 .status-box {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 50px;
-    margin: 0px 30px 24px 30px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 50px;
+  margin: 0px 30px 24px 30px;
 
 }
 
 .card {
-    background: white;
-    outline: 1px solid #BEBEBE;
-    border-radius: 20px;
-    height: 200px;
-    padding: 20px;
-    position: relative;
-    overflow: hidden;
+  background: white;
+  outline: 1px solid #BEBEBE;
+  border-radius: 20px;
+  height: 200px;
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
 }
 
 .card-icon {
-    position: absolute;
-    right: 30px;
-    bottom: 20px;
-    z-index: 1;
-    scale: 1.4;
+  position: absolute;
+  right: 30px;
+  bottom: 20px;
+  z-index: 1;
+  scale: 1.4;
 }
 
 .card-icon-2 {
-    position: absolute;
-    right: 50px;
-    bottom: 60px;
-    z-index: 1;
-    scale: 1.4;
+  position: absolute;
+  right: 50px;
+  bottom: 60px;
+  z-index: 1;
+  scale: 1.4;
 }
 
 .card-icon-3 {
-    position: absolute;
-    right: 10px;
-    bottom: 40px;
-    z-index: 1;
-    scale: 1.4;
+  position: absolute;
+  right: 10px;
+  bottom: 40px;
+  z-index: 1;
+  scale: 1.4;
 }
 
 .card-icon-4 {
-    position: absolute;
-    right: 30px;
-    bottom: 40px;
-    z-index: 1;
-    scale: 1.4;
+  position: absolute;
+  right: 30px;
+  bottom: 40px;
+  z-index: 1;
+  scale: 1.4;
 }
 
 .card-content {
-    position: relative;
-    z-index: 2;
+  position: relative;
+  z-index: 2;
 }
 
 
 .card h4 {
-    margin: 10px;
-    font-size: 18px;
-    font-weight: 600;
+  margin: 10px;
+  font-size: 18px;
+  font-weight: 600;
 }
 
 .card h1 {
-    font-size: 50px;
-    margin: 40px 0 0 10px;
+  font-size: 50px;
+  margin: 40px 0 0 10px;
 }
 
 .card span {
-    font-size: 16px;
-    font-weight: 600;
-    color: #777;
-    margin: 0px 0 0 10px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #777;
+  margin: 0px 0 0 10px;
 
 }
 
 .search-box input {
-    width: 95%;
-    margin: 0 30px 20px 30px;
-    padding: 15px 20px;
-    border-radius: 15px;
-    border: none;
-    outline: none;
-    background-color: #F0F0F0;
-    font-size: 14px;
-    font-weight: 800;
+  width: 95%;
+  margin: 0 30px 20px 30px;
+  padding: 15px 20px;
+  border-radius: 15px;
+  border: none;
+  outline: none;
+  background-color: #F0F0F0;
+  font-size: 14px;
+  font-weight: 800;
 }
 
 .table-box {
-    background: white;
-    outline: 1px solid #BEBEBE;
-    margin: 0 30px 20px 30px;
-    border-radius: 20px;
-    min-height: 100px;
-    padding: 20px;
-    position: relative;
-    border-collapse: collapse;
+  background: white;
+  outline: 1px solid #BEBEBE;
+  margin: 0 30px 20px 30px;
+  border-radius: 20px;
+  min-height: 100px;
+  padding: 20px;
+  position: relative;
+  border-collapse: collapse;
 }
 
 table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 20px;
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 20px;
 }
 
 thead th {
-    text-align: center;
-    padding: 12px;
-    border-bottom: 1px solid #BEBEBE;
+  text-align: center;
+  padding: 12px;
+  border-bottom: 1px solid #BEBEBE;
 }
 
 tbody td {
-    padding: 16px;
-    text-align: center;
+  padding: 16px;
+  text-align: center;
 }
 
 .dashboard-table {
-    font-size: 14px;
-    color: #666;
-    padding-bottom: 8px;
+  font-size: 14px;
+  color: #666;
+  padding-bottom: 8px;
+}
+
+.btn-sm {
+  color: #000000;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  background: transparent;
+  padding: 10px 22px;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.btn-sm:hover {
+  background: rgba(0, 0, 0, 0.05);
 }

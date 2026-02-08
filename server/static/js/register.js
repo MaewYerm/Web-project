@@ -47,3 +47,28 @@ document.querySelectorAll('.modal').forEach(modal => {
     }
   })
 })
+
+const params = new URLSearchParams(window.location.search);
+
+if (params.get('register') === 'success') {
+  Swal.fire({
+    icon: 'success',
+    title: 'สมัครสมาชิกสำเร็จ',
+    text: 'สามารถเข้าสู่ระบบได้ทันที',
+    confirmButtonText: 'ตกลง'
+  }).then(() => {
+    // ล้าง query ออกจาก URL
+    window.history.replaceState({}, document.title, '/');
+  });
+}
+
+if (params.get('register') === 'fail') {
+  Swal.fire({
+    icon: 'error',
+    title: 'สมัครไม่สำเร็จ',
+    text: 'กรุณาตรวจสอบข้อมูลอีกครั้ง',
+    confirmButtonText: 'ตกลง'
+  }).then(() => {
+    window.history.replaceState({}, document.title, '/');
+  });
+}

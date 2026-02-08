@@ -1,0 +1,88 @@
+/* ===== หน้าประวัติการทำรายการ ===== */
+.page-4 {
+    background: #FFE3E3;
+    margin: 0px 0px 0px 0px;
+    width: calc(100% - 40px);
+    padding: 24px;
+    border-radius: 16px;
+}
+
+.history-card {
+    display: block;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    outline: 1px solid #BEBEBE;
+    margin: 15px 30px 20px 30px;
+    border-radius: 20px;
+    min-height: 100px;
+    padding: 20px;
+}
+
+.history-box {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 50px;
+  margin: 0px 30px 24px 30px;
+}
+
+.his-card {
+  background: white;
+  outline: 1px solid #BEBEBE;
+  border-radius: 20px;
+  height: 200px;
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.his-card h4 {
+  margin: 10px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.his-card h1 {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 60px;
+  font-weight: 600;
+}
+
+.history-filter,
+.history-table {
+  background: #fff;
+  outline: 1px solid #BEBEBE;
+  border-radius: 20px;
+  padding: 20px;
+  margin: 24px 30px;
+}
+
+.filter-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.history-table table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 12px;
+}
+
+.history-table th,
+.history-table td {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+  text-align: center;
+}
+
+.green { color: #22c55e }
+.blue { color: #3b82f6 }
+.red { color: #ef4444 }
+.orange { color: #fb923c }
+
+.green, .blue, .red, .orange {
+  font-weight: 600;
+}

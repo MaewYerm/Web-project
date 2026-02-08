@@ -5,16 +5,11 @@ const beefController = require('../controllers/beef.controller.js');
 // เพิ่มข้อมูลชิ้นเนื้อ
 router.post('/', beefController.create);
 
-// ดูเนื้อทั้งหมด
-router.get('/', beefController.getAll);
+router.post('/delete', beefController.delete);
 
-// ดูเนื้อตาม id
-router.get('/:id', beefController.getById);
+router.put('/:lot_id', beefController.update);
 
-// แก้ไขข้อมูลเนื้อ
-router.put('/:id', beefController.update);
+router.post('/withdraw', beefController.withdraw)
 
-// ลบเนื้อ
-router.delete('/:id', beefController.remove);
 
 module.exports = router;

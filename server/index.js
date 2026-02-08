@@ -26,11 +26,21 @@ app.set('view engine', 'ejs');
 app.use('/user', require('./routes/user'));
 app.use('/beef', require('./routes/beef'));
 app.use('/storage', require('./routes/storage'));
-app.use('/audit', require('./routes/audit'));
+app.use('/setting', require('./routes/setting'));
+app.use('/api/setting', require('./routes/setting'));
+app.use('/api/storage', require('./routes/storage'));
+app.use('/api/beef-type', require('./routes/beef-type'))
+app.use('/api/grade', require('./routes/grade'))
+app.use('/api/beef', require('./routes/beef'))
+app.use('/api/stock', require('./routes/stock'))
+app.use('/api/audit', require('./routes/audit'));
+
 
 // pages
 app.get('/', (req, res) => {
-  res.render('login');
+  res.render('login', {
+    query: req.query
+  });
 });
 
 // auth
@@ -41,10 +51,23 @@ function requireLogin(req, res, next) {
   next();
 }
 
-app.get('/dashboard-staff', (req, res) => {
-  if (!req.session.user) return res.redirect('/');
-  res.render('dashboard-staff');
+const settingController = require('./controllers/setting.controller');
+
+app.get('/dashboard-staff', requireLogin, (req, res) => {
+  settingController.getUsers((err, users) => {
+    if (err) {
+      console.error(err);
+      users = [];
+    }
+
+    res.render('dashboard-staff', {
+      user: req.session.user,
+      users
+    });
+  });
 });
+
+
 
 // start server
 app.listen(3000, '0.0.0.0', () => {

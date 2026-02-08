@@ -1,79 +1,60 @@
 const db = require('../libs/mysql');
 
+exports.list = (req, res) => {
+  const { action = 'ALL', range = 'ALL' } = req.query;
 
-// ดูประวัติการทำรายการทั้งหมด
+  let where = [];
+  let params = [];
 
+  if (action !== 'ALL') {
+    where.push('a.action_type = ?');
+    params.push(action);
+  }
 
-exports.getAll = (req, res) => {
+  if (range === 'TODAY') {
+    where.push('DATE(a.action_at) = CURDATE()');
+  } else if (range === '7DAYS') {
+    where.push('a.action_at >= NOW() - INTERVAL 7 DAY');
+  } else if (range === '30DAYS') {
+    where.push('a.action_at >= NOW() - INTERVAL 30 DAY');
+  }
+
+  const whereSql = where.length ? `WHERE ${where.join(' AND ')}` : '';
+
   const sql = `
-    SELECT
-      a.audit_id,
-      a.action_time,
-      a.action_type,
-      a.table_name,
-      a.record_id,
-      a.old_value,
-      a.new_value,
-
+    SELECT 
+      a.*, 
       u.username,
       u.firstname,
       u.lastname
     FROM audit_log a
-    LEFT JOIN user u
-      ON a.User_user_id = u.user_id
-    ORDER BY a.action_time DESC
+    LEFT JOIN user u ON a.action_by = u.user_id
+    ${whereSql}
+    ORDER BY a.action_at DESC
+    LIMIT 200
+  `;
+
+  db.query(sql, params, (err, rows) => {
+    if (err) return res.status(500).json(err);
+    res.json(rows);
+  });
+};
+
+exports.summary = (req, res) => {
+  const sql = `
+    SELECT
+      COUNT(*) AS total,
+      SUM(action_type='INSERT') AS insert_count,
+      SUM(action_type='UPDATE') AS update_count,
+      SUM(action_type='DELETE') AS delete_count,
+      SUM(action_type='WITHDRAW') AS withdraw_count,
+      SUM(action_type='EXPIRE') AS expire_count
+    FROM audit_log
   `;
 
   db.query(sql, (err, rows) => {
     if (err) return res.status(500).json(err);
-    res.json(rows);
+    res.json(rows[0]);
   });
 };
 
-
-
-// ดูประวัติของ record เดียว (เช่น beef_id เดียว)
-
-exports.getByRecord = (req, res) => {
-  const { table, recordId } = req.params;
-
-  const sql = `
-    SELECT *
-    FROM audit_log
-    WHERE table_name = ?
-      AND record_id = ?
-    ORDER BY action_time DESC
-  `;
-
-  db.query(sql, [table, recordId], (err, rows) => {
-    if (err) return res.status(500).json(err);
-    res.json(rows);
-  });
-};
-
-
-// ใช้เรียกข้อมูลจาก controller อื่น
-
-exports.createLog = ({
-  table_name,
-  record_id,
-  action_type,
-  old_value,
-  new_value,
-  user_id
-}) => {
-  const sql = `
-    INSERT INTO audit_log
-    (table_name, record_id, action_type, old_value, new_value, User_user_id)
-    VALUES (?, ?, ?, ?, ?, ?)
-  `;
-
-  db.query(sql, [
-    table_name,
-    record_id,
-    action_type,
-    old_value,
-    new_value,
-    user_id || null
-  ]);
-};

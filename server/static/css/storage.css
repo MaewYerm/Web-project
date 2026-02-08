@@ -1,6 +1,5 @@
 /* ===== หน้า Storage ===== */
 .page-2 {
-    display: none;
     background: #FFE3E3;
     margin: 0px 0px 0px 0px;
     width: calc(100% - 40px);
@@ -22,7 +21,6 @@
     padding: 20px;
     outline: 1px solid #BEBEBE;
     cursor: pointer;
-
 }
 
 .storage-card h3 {

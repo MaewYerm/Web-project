@@ -1,78 +1,29 @@
 const db = require('../libs/mysql');
 
-// ดู storage ทั้งหมด
 exports.getAll = (req, res) => {
   const sql = `
-    SELECT 
-      s.storage_id,
-      s.storage_name,
-      s.capacity,
-      s.temperature,
-      s.storage_type_id,
-      st.storage_type_name
-    FROM storage s
-    LEFT JOIN storage_type st
-      ON s.storage_type_id = st.storage_type_id
-  `;
-
-  db.query(sql, (err, rows) => {
-    if (err) return res.status(500).json(err);
-    res.json(rows);
-  });
-};
-
-exports.getById = (req, res) => {
-  const sql = `
-    SELECT 
-      s.storage_id,
-      s.storage_name,
-      s.capacity,
-      s.temperature,
-      s.storage_type_id,
-      st.storage_type_name
-    FROM storage s
-    LEFT JOIN storage_type st
-      ON s.storage_type_id = st.storage_type_id
-    WHERE s.storage_id = ?
-  `;
-
-  db.query(sql, [req.params.id], (err, rows) => {
-    if (err) return res.status(500).json(err);
-    if (rows.length === 0)
-      return res.status(404).json({ message: 'Storage not found' });
-    res.json(rows[0]);
-  });
-};
-
-// ดูชิ้นเนื้อทั้งหมดใน storage นั้น
-exports.getBeefInStorage = (req, res) => {
-  const sql = `
     SELECT
-      b.beef_id,
-      b.lot_id,
-      b.qty,
-      b.weight,
-      b.receive_date,
-      b.expired_date,
-      b.aging,
+      s.storage_id,
+      s.storage_name,
+      s.capacity,
+      s.temperature,
+      s.storage_type,
+      IFNULL(SUM(b.weight), 0) AS totalWeight,
+      IFNULL(SUM(b.qty), 0) AS totalItems
+    FROM storage s
+    LEFT JOIN beef_info b
+      ON s.storage_id = b.storage_id
+    GROUP BY s.storage_id
+  `
 
-      bt.type_name AS beef_type,
-      g.grade_name,
-      o.owner_name
-    FROM beef_info b
-    JOIN beef_type bt ON b.beef_type_id = bt.beef_type_id
-    JOIN grade g ON b.grade_id = g.grade_id
-    JOIN owner o ON b.owner_owner_id = o.owner_id
-    WHERE b.storage_id = ?
-  `;
-
-  db.query(sql, [req.params.id], (err, rows) => {
-    if (err) return res.status(500).json(err);
-    res.json(rows);
-  });
-};
+  db.query(sql, (err, result) => {
+    if (err) return res.status(500).json(err)
+    res.json(result)
+  })
+}
 
 
+// สร้างสถานที่จัดเก็บใหม่
 exports.create = (req, res) => {
   const {
     storage_name,
@@ -99,7 +50,6 @@ exports.create = (req, res) => {
     }
   );
 };
-
 
 exports.update = (req, res) => {
   const sql = `
