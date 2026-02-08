@@ -24,7 +24,7 @@ Install dependencies for project
 npm init -y
 ```
 ```
-npm i express ejs mysql2 dotenv express-session nodemon
+npm i express ejs mysql2 dotenv express-session nodemon bcrypt multer
 ```
 2. run website
 ```
