@@ -106,7 +106,6 @@ exports.login = async (req, res) => {
 };
 
 
-
 exports.profile = (req, res) => {
   if (!req.session.user) {
     return res.redirect('/');
@@ -138,6 +137,43 @@ exports.profileImage = (req, res) => {
 exports.logout = (req, res) => {
   req.session.destroy(() => {
     res.redirect('/');
+  });
+};
+
+exports.forgotPassword = async (req, res) => {
+  const { username, phone, email, new_password } = req.body;
+
+  if (!username || !phone || !email || !new_password) {
+    return res.status(400).json({ message: 'กรอกข้อมูลไม่ครบ' });
+  }
+
+  // ตรวจสอบตัวตน
+  const sqlCheck = `
+    SELECT user_id 
+    FROM user
+    WHERE username = ? AND tel_main = ? AND email = ?
+  `;
+
+  db.query(sqlCheck, [username, phone, email], async (err, rows) => {
+    if (err) return res.status(500).json({ message: 'Database error' });
+
+    if (!rows.length) {
+      return res.status(404).json({ message: 'ข้อมูลไม่ถูกต้อง' });
+    }
+
+    const hashed = await bcrypt.hash(new_password, 10);
+
+    const sqlUpdate = `
+      UPDATE user 
+      SET password = ?
+      WHERE user_id = ?
+    `;
+
+    db.query(sqlUpdate, [hashed, rows[0].user_id], (err2) => {
+      if (err2) return res.status(500).json({ message: 'เปลี่ยนรหัสไม่สำเร็จ' });
+
+      res.json({ message: 'เปลี่ยนรหัสผ่านเรียบร้อยแล้ว' });
+    });
   });
 };
 

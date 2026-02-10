@@ -151,24 +151,39 @@
   </div>
 
 
-  <div id="forgetpassModal" class="modal hidden">
-    <div class="modal-card">
-      <h2 class="modal-title">ลืมรหัสผ่าน</h2>
-      <p class="modal-subtitle">กรอกอีเมลเพื่อรีเซ็ตรหัสผ่าน</p>
+<div id="forgetpassModal" class="modal hidden">
+  <div class="modal-card">
+    <h2 class="modal-title">ลืมรหัสผ่าน</h2>
+    <p class="modal-subtitle">กรอกข้อมูลเพื่อยืนยันตัวตน</p>
 
-      <form class="modal-form">
-        <div class="form-regis-group">
-          <label>อีเมล</label>
-          <input type="email" placeholder="example@email.com">
-        </div>
+    <form class="modal-form" id="forgotForm">
+      <div class="form-regis-group">
+        <label>Username</label>
+        <input type="text" name="username" required>
+      </div>
 
-        <div class="modal-actions">
-          <button type="button" class="btn-cancel close-modal">ยกเลิก</button>
-          <button type="submit" class="btn-submit">ส่งลิงก์</button>
-        </div>
-      </form>
-    </div>
+      <div class="form-regis-group">
+        <label>เบอร์โทรศัพท์</label>
+        <input type="text" name="phone" required>
+      </div>
+
+      <div class="form-regis-group">
+        <label>อีเมล</label>
+        <input type="email" name="email" required>
+      </div>
+
+      <div class="form-regis-group">
+        <label>รหัสผ่านใหม่</label>
+        <input type="password" name="new_password" required>
+      </div>
+
+      <div class="modal-actions">
+        <button type="button" class="btn-cancel close-modal">ยกเลิก</button>
+        <button type="submit" class="btn-submit">เปลี่ยนรหัสผ่าน</button>
+      </div>
+    </form>
   </div>
+</div>
 
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="/js/register.js"></script>

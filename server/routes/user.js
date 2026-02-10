@@ -9,20 +9,20 @@ const upload = multer({ storage });
 // สมัครสมาชิก
 router.post('/register', upload.single('profile_pic'), userController.register);
 
-
 // login
 router.post('/login', userController.login);
 
 // ดูโปรไฟล์ตัวเอง
 router.get('/profile', userController.profile);
 
-
 // รูปโปรไฟล์
 router.get('/profile-pic', userController.profileImage);
 
-
 // logout
 router.get('/logout', userController.logout);
+
+//ลืมรหัสผ่าน
+router.post('/forgot-password', userController.forgotPassword);
 
 
 

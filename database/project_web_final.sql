@@ -1,3 +1,5 @@
+CREATE DATABASE  IF NOT EXISTS `project_web` /*!40100 DEFAULT CHARACTER SET utf8mb3 */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `project_web`;
 -- MySQL dump 10.13  Distrib 8.0.44, for Win64 (x86_64)
 --
 -- Host: localhost    Database: project_web
@@ -24,9 +26,9 @@ DROP TABLE IF EXISTS `audit_log`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `audit_log` (
   `audit_id` int NOT NULL AUTO_INCREMENT,
-  `action_type` enum('INSERT','UPDATE','DELETE','WITHDRAW') NOT NULL,
-  `lot_id` varchar(50) DEFAULT NULL,
-  `beef_type` varchar(100) DEFAULT NULL,
+  `action_type` enum('INSERT','UPDATE','DELETE','WITHDRAW') COLLATE utf8mb4_unicode_ci NOT NULL,
+  `lot_id` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `beef_type` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `old_qty` int DEFAULT NULL,
   `new_qty` int DEFAULT NULL,
   `qty_diff` int DEFAULT NULL,
@@ -35,11 +37,11 @@ CREATE TABLE `audit_log` (
   `weight_diff` decimal(10,2) DEFAULT NULL,
   `action_by` int NOT NULL,
   `action_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `reason` text,
+  `reason` mediumtext COLLATE utf8mb4_unicode_ci,
   PRIMARY KEY (`audit_id`),
   KEY `fk_audit_user` (`action_by`),
   CONSTRAINT `fk_audit_user` FOREIGN KEY (`action_by`) REFERENCES `user` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -61,7 +63,7 @@ DROP TABLE IF EXISTS `beef_info`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `beef_info` (
   `beef_id` int NOT NULL AUTO_INCREMENT,
-  `lot_id` varchar(45) NOT NULL,
+  `lot_id` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
   `qty` int NOT NULL,
   `weight` float NOT NULL,
   `receive_date` date NOT NULL,
@@ -80,7 +82,7 @@ CREATE TABLE `beef_info` (
   CONSTRAINT `fk_Beef_info_Grade1` FOREIGN KEY (`grade_id`) REFERENCES `grade` (`grade_id`),
   CONSTRAINT `fk_Beef_info_Owner1` FOREIGN KEY (`Owner_owner_id`) REFERENCES `owner` (`owner_id`),
   CONSTRAINT `fk_Beef_info_storage1` FOREIGN KEY (`storage_id`) REFERENCES `storage` (`storage_id`) ON DELETE RESTRICT ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -101,9 +103,9 @@ DROP TABLE IF EXISTS `beef_type`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `beef_type` (
   `beef_type_id` int NOT NULL,
-  `type_name` varchar(45) NOT NULL,
+  `type_name` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`beef_type_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -125,9 +127,9 @@ DROP TABLE IF EXISTS `gender`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `gender` (
   `gender_id` int NOT NULL,
-  `gender_name` varchar(45) NOT NULL,
+  `gender_name` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`gender_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -149,9 +151,9 @@ DROP TABLE IF EXISTS `grade`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `grade` (
   `grade_id` int NOT NULL,
-  `grade_name` varchar(45) NOT NULL,
+  `grade_name` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`grade_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -173,14 +175,14 @@ DROP TABLE IF EXISTS `owner`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `owner` (
   `owner_id` int NOT NULL AUTO_INCREMENT,
-  `owner_name` varchar(45) NOT NULL,
-  `owner_tel` varchar(45) NOT NULL,
-  `owner_coop_id` varchar(45) NOT NULL,
-  `owner_email` varchar(45) DEFAULT NULL,
-  `owner_lineid` varchar(45) DEFAULT NULL,
-  `owner_facebook` varchar(45) DEFAULT NULL,
+  `owner_name` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `owner_tel` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `owner_coop_id` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `owner_email` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `owner_lineid` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `owner_facebook` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`owner_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -201,9 +203,9 @@ DROP TABLE IF EXISTS `role`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `role` (
   `role_id` int NOT NULL,
-  `role_name` varchar(45) NOT NULL,
+  `role_name` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`role_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -225,12 +227,12 @@ DROP TABLE IF EXISTS `storage`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `storage` (
   `storage_id` int NOT NULL AUTO_INCREMENT,
-  `storage_name` varchar(45) NOT NULL,
+  `storage_name` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
   `capacity` float NOT NULL,
   `temperature` float NOT NULL,
-  `storage_type` varchar(45) NOT NULL,
+  `storage_type` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`storage_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -239,7 +241,7 @@ CREATE TABLE `storage` (
 
 LOCK TABLES `storage` WRITE;
 /*!40000 ALTER TABLE `storage` DISABLE KEYS */;
-INSERT INTO `storage` VALUES (1,'Freezer A1',400,-2,'ตู้แช่แข็ง'),(2,'Cold Storage A1',600,0,'ห้องเย็น'),(3,'Cold Storage B2',800,4,'ห้องเย็น');
+INSERT INTO `storage` VALUES (1,'Freezer A1',400,-2,'ตู้แช่แข็ง'),(2,'Cold Storage A1',600,0,'ห้องเย็น'),(10,'Cold Storage B2',800,4,'ห้องเย็น');
 /*!40000 ALTER TABLE `storage` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -252,17 +254,17 @@ DROP TABLE IF EXISTS `user`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `user` (
   `user_id` int NOT NULL AUTO_INCREMENT,
-  `username` varchar(45) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `firstname` varchar(45) NOT NULL,
-  `lastname` varchar(45) NOT NULL,
+  `username` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `firstname` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `lastname` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
   `birthday` date NOT NULL,
-  `citizen_id` varchar(13) DEFAULT NULL,
-  `address` varchar(100) NOT NULL,
-  `nation` varchar(45) NOT NULL,
-  `tel_main` varchar(45) NOT NULL,
-  `email` varchar(45) NOT NULL,
-  `tel_sub` varchar(20) DEFAULT NULL,
+  `citizen_id` varchar(13) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `address` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nation` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tel_main` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tel_sub` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `profile_pic` mediumblob,
   `role_id` int NOT NULL,
   `gender_id` int NOT NULL,
@@ -272,7 +274,7 @@ CREATE TABLE `user` (
   KEY `fk_User_Gender1_idx` (`gender_id`),
   CONSTRAINT `fk_User_Gender1` FOREIGN KEY (`gender_id`) REFERENCES `gender` (`gender_id`),
   CONSTRAINT `fk_User_Role1` FOREIGN KEY (`role_id`) REFERENCES `role` (`role_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -294,4 +296,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2026-02-09  4:12:19
+-- Dump completed on 2026-02-11  0:33:15

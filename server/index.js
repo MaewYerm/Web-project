@@ -28,6 +28,7 @@ app.use('/beef', require('./routes/beef'));
 app.use('/storage', require('./routes/storage'));
 app.use('/setting', require('./routes/setting'));
 app.use('/api/setting', require('./routes/setting'));
+app.use('/api/user', require('./routes/user'));
 app.use('/api/storage', require('./routes/storage'));
 app.use('/api/beef-type', require('./routes/beef-type'))
 app.use('/api/grade', require('./routes/grade'))
