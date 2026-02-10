@@ -28,7 +28,7 @@ npm i express ejs mysql2 dotenv express-session nodemon bcrypt multer
 ```
 2. run website
 ```
-npm run start
+npm run dev
 ```
 3. open web browser
 ```
