@@ -26,7 +26,7 @@ form.addEventListener('submit', async (e) => {
     // เก็บ user
     localStorage.setItem('user', JSON.stringify(data));
 
-    window.location.href = '/dashboard-staff';
+    window.location.href = '/dashboard';
 });
 
 form.addEventListener('input', () => {

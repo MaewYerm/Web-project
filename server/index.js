@@ -53,14 +53,14 @@ function requireLogin(req, res, next) {
 
 const settingController = require('./controllers/setting.controller');
 
-app.get('/dashboard-staff', requireLogin, (req, res) => {
+app.get('/dashboard', requireLogin, (req, res) => {
   settingController.getUsers((err, users) => {
     if (err) {
       console.error(err);
       users = [];
     }
 
-    res.render('dashboard-staff', {
+    res.render('dashboard', {
       user: req.session.user,
       users
     });

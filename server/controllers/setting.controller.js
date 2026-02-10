@@ -89,9 +89,9 @@ exports.deleteUser = (req, res) => {
     err => {
       if (err) {
         console.error(err);
-        return res.redirect('/dashboard-staff?error=delete');
+        return res.redirect('/dashboard?error=delete');
       }
-      res.redirect('/dashboard-staff');
+      res.redirect('/dashboard');
     }
   );
 };
