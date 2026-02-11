@@ -1,5 +1,5 @@
 # Beef Warehouse Management System 
-(ระบบจัดการคลังชิ้นเนื้อโคขุน)
+# ระบบจัดการคลังชิ้นเนื้อโคขุน
 
 # Introduction
 
